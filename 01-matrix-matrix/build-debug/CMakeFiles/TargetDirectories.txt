@@ -1,3 +1,0 @@
-/Users/yangyizhi/Documents/M2 CHPS/MPNA/mpna/01-matrix-matrix/build-debug/CMakeFiles/matrix-matrix.dir
-/Users/yangyizhi/Documents/M2 CHPS/MPNA/mpna/01-matrix-matrix/build-debug/CMakeFiles/edit_cache.dir
-/Users/yangyizhi/Documents/M2 CHPS/MPNA/mpna/01-matrix-matrix/build-debug/CMakeFiles/rebuild_cache.dir
