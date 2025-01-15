@@ -27,7 +27,7 @@ cmake --build build-release
 You can then run the program with:
 
 ```bash
-./build-debug/matrix-matrix <n> <m> <p>
+./build-debug/matrix_matrix <n> <m> <p>
 ```
 
 where `n`, `m`, and `p` are the dimensions of the matrices.
@@ -44,17 +44,11 @@ arguments:
 
 Is the function working correctly? How can you test it?
 
-We may print the matrices to check the results
-
 ### Exercise 2
 
 Compute the complexity of the function `matrix_matrix_multiplication`.
 
-The complexity is n multiplications and (n - 1) additions per case, and there are (m * p) cases, it returns O(n * m * p).
-
 Can this function written differently? If so, how?
-
-The function can be written in switching the order of loops.
 
 ### Exercise 3
 
