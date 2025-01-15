@@ -3,11 +3,11 @@
 #include <string.h>
 #include <math.h>
 
-#define EPSILON 1e-6 // convergence criterion
+#define EPSILON 1e-7 // convergence criterion
 #define MAX_ITER 1000 // maximum number of iterations
 
 // store the matrix in CSR format
-void generate_grid_CSR(int n, int * indices, int * col_id, float * values)
+void generate_grid_CSR(int n, int * indices, int * col_id, double * values)
 {
     int count = 0; // total number of non zeros to be stored
     indices[0] = 0;
@@ -50,7 +50,7 @@ void generate_grid_CSR(int n, int * indices, int * col_id, float * values)
 }
 
 // Jacobi method
-void jacobi(FILE *Jac, int N, int * indices, int * col_id, float * values, float * b, float * x, float * x_new, float b_abs, float r_rel)
+void jacobi(FILE *Jac, int N, int * indices, int * col_id, double * values, double * b, double * x, double * x_new, double b_abs, double r_rel)
 {
     // initialization
     for(int i = 0; i < N; i ++)
@@ -65,7 +65,7 @@ void jacobi(FILE *Jac, int N, int * indices, int * col_id, float * values, float
         for (int i = 0; i < N; i ++)
         {
             int self = -1;
-            float sum = 0.0;
+            double sum = 0.0;
             for (int j = indices[i]; j < indices[i + 1]; j ++)
             {
                 if (col_id[j] != i)
@@ -85,10 +85,10 @@ void jacobi(FILE *Jac, int N, int * indices, int * col_id, float * values, float
         }
 
         // calculate the residual ||Ax - b||
-        float res_sum2 = 0.0;
+        double res_sum2 = 0.0;
         for (int i = 0; i < N; i ++)
         {
-            float ax_i = 0.0;
+            double ax_i = 0.0;
             for (int j = indices[i]; j < indices[i + 1]; j ++)
             {
                 ax_i += x_new[col_id[j]] * values[j];
@@ -102,7 +102,7 @@ void jacobi(FILE *Jac, int N, int * indices, int * col_id, float * values, float
 }
 
 // Gauss-Seidel method
-void gauss_seidel(FILE *GS, int N, int * indices, int * col_id, float * values, float * b, float * x, float b_abs, float r_rel)
+void gauss_seidel(FILE *GS, int N, int * indices, int * col_id, double * values, double * b, double * x, double b_abs, double r_rel)
 {
     // initialization
     for(int i = 0; i < N; i ++)
@@ -115,7 +115,7 @@ void gauss_seidel(FILE *GS, int N, int * indices, int * col_id, float * values, 
     {    
         for (int i = 0; i < N; i ++)
         {
-            float sum = 0.0;
+            double sum = 0.0;
             int self = -1;
             for (int j = indices[i]; j < indices[i + 1]; j ++)
             {
@@ -140,10 +140,10 @@ void gauss_seidel(FILE *GS, int N, int * indices, int * col_id, float * values, 
         }
 
         // calculate the residual ||Ax - b||
-        float res_sum2 = 0.0;
+        double res_sum2 = 0.0;
         for (int i = 0; i < N; i ++)
         {
-            float ax_i = 0.0;
+            double ax_i = 0.0;
             for (int j = indices[i]; j < indices[i + 1]; j ++)
             {
                 ax_i += x[col_id[j]] * values[j];
@@ -174,22 +174,22 @@ int main(int argc, char** argv)
     // allocate memory
     int * indices = (int *)malloc((N + 1) * sizeof(int));
     int * col_id = (int *)malloc(nonzeros * sizeof(int));
-    float * values = (float *)malloc(nonzeros * sizeof(float));
+    double * values = (double *)malloc(nonzeros * sizeof(double));
 
-    float * b = (float *)malloc(N * sizeof(float));
-    float b_abs2 = 0.0, r_rel = 1.0; // relative residual initialized as 1.0 (could be any value greater than EPSILON)
-    float * x = (float *)malloc(N * sizeof(float));
-    float * x_new = (float *)malloc(N * sizeof(float));
+    double * b = (double *)malloc(N * sizeof(double));
+    double b_abs2 = 0.0, r_rel = 1.0; // relative residual initialized as 1.0 (could be any value greater than EPSILON)
+    double * x = (double *)malloc(N * sizeof(double));
+    double * x_new = (double *)malloc(N * sizeof(double));
 
     printf("b: ");
     for(int i = 0; i < N; i ++)
     {
-        b[i] = (float)rand() / RAND_MAX + 1;  // random values [1, 2] 
+        b[i] = (double)rand() / RAND_MAX + 1;  // random values [1, 2] 
         printf("%.2f ", b[i]);
         b_abs2 += b[i] * b[i];
     }
     printf("\n");
-    float b_abs = sqrt(b_abs2); // pre-calculate ||b||
+    double b_abs = sqrt(b_abs2); // pre-calculate ||b||
     printf("b_abs: %.2f\n", b_abs);
 
     generate_grid_CSR(n, indices, col_id, values);
