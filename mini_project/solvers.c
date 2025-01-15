@@ -57,3 +57,8 @@ void CG(double * A, double * b, double * x, int n, int max_iter, double tol)
         }
     }
 }
+
+void GMRES()
+{
+    // TODO
+}
