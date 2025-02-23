@@ -4,6 +4,18 @@
 
 #define MAX_SIZE 100
 
+
+void read_size(char *filename, int *n, int *nnz)
+{
+    FILE *fp = fopen(filename, "r");
+    if (!fp)
+    {
+        perror("Error opening file");
+        exit(1);
+    }
+    
+}
+
 void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double *val)
 {
     FILE *fp = fopen(filename, "r");
