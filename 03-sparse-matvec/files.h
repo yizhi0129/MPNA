@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_SIZE 100
+#define MAX_SIZE 1024
 
 
 void read_size(char *filename, int *n, int *nnz)
@@ -36,12 +36,12 @@ void read_size(char *filename, int *n, int *nnz)
 }
 
 
-// naïve sort
+// naive bubble sort
 void bubble_sort(int *id, double *value, int n) 
 {
-    for (int i = 0; i < n - 1; i ++) 
+    for (int i = 0; i < n; i ++) 
     {
-        for (int j = 0; j < n - 1 - i; j ++) 
+        for (int j = 0; j < n - i; j ++) 
         {
             if (id[j] > id[j + 1]) 
             {
@@ -74,6 +74,7 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
 
     while (fgets(line, sizeof(line), fp))
     {
+        int n_check = 0, nnz_check = 0;
         if (line[0] == '%')
         {
             continue;
@@ -82,7 +83,6 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
         {
             if (count == 0)
             {
-                int n_check = 0, nnz_check = 0;
                 sscanf(line, "%d %*d %d", &n_check, &nnz_check);
                 int nnz_check1 = nnz_check * 2 - n_check;
                 if (n_check != n || nnz_check1 != nnz)
@@ -91,47 +91,90 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
                     exit(1);
                 }
             }
-            else
-            { 
-                for (int k = 0; k < nnz; k ++)
-                {
-                    sscanf(line, "%d %d %lf", &row[k], &col[k], &A[k]);
-                    if (row[k] != col[k])
-                    {
-                        row[k + 1] = col[k];
-                        col[k + 1] = row[k];
-                        A[k + 1] = A[k];
-                        k ++;
-                    }
-                }
-            }
             count ++;
+            
+            int sym = nnz_check; 
+            for (int k = 0; k < nnz_check; k ++)
+            {
+                if (fgets(line, sizeof(line), fp) == NULL) 
+                {
+                    fprintf(stderr, "Fail to read line %d\n", k + 1);
+                    break;
+                }
+            
+                int temp_r = 0, temp_c = 0;
+                double temp_A = 0.0;
+                if (sscanf(line, "%d %d %lf", &temp_r, &temp_c, &temp_A) != 3) 
+                {
+                    fprintf(stderr, "Fail to load data line %d %s\n", k + 1, line);
+                    continue;
+                }
+
+                row[k] = temp_r - 1;
+                col[k] = temp_c - 1;
+                A[k] = temp_A;    
+                printf("Read: k = %d, row = %d, col = %d, A = %.lf\n", k, row[k], col[k], A[k]);
+    
+                if (temp_r != temp_c)
+                {
+                    row[sym] = temp_c - 1;
+                    col[sym] = temp_r - 1;
+                    A[sym] = temp_A;
+                    printf("Complete symmetry: k = %d, row = %d, col = %d, A = %.lf\n", sym, row[sym], col[sym], A[sym]);
+                    sym ++;
+                }
+            }           
         }
+
+        // convert to CSR format (not sorted)
+        printf("Matrix: CSR not sorted\n");
+        for (int i = 0; i < nnz; i ++) 
+        {
+            col_id[i] = col[i] * n + row[i];
+            val[i] = A[i];
+            printf("%d %d %lf\n", i, col_id[i], val[i]);
+        }    
+        printf("------------------------------\n");
+
+        // sort the CSR format and complete index array
+        bubble_sort(col_id, val, nnz);
+        printf("Matrix: CSR sorted\n");
+        for (int i = 0; i < nnz; i ++)
+        {
+            printf("%d %d %lf\n", i, col_id[i], val[i]);
+        }
+        printf("------------------------------\n");
+
+        // complete the index array
+        int count_ind = 0;    
+        index[0] = 0;
+        printf("Index: ");
+        for (int k = 1; k < n; k ++)
+        {
+            for (int i = 0; i < nnz; i ++)
+            {
+                if (col_id[i] < n * k)
+                {
+                    count_ind ++;
+                }
+                else
+                {
+                    break;
+                }
+                
+            }
+            index[k] = col_id[count_ind + 1];
+            printf("%d %d\n", k + 1, index[k]);
+        }
+        index[n] = nnz;   
+        printf("------------------------------\n");
     }
-    fclose(fp);
-
-    // convert to CSR format (not sorted)
-    for (int i = 0; i < nnz; i ++) 
-    {
-        col_id[i] = col[i] + row[i] * n;
-        val[i] = A[i];
-    }    
-
+    
     free(A);
     free(row);
     free(col);
 
-    // sort the CSR format and complete index array
-    bubble_sort(col_id, val, nnz);
-    int count_ind = 0;    
-    index[0] = 0;
-    for (int k = 0; k < n; k ++)
-    {
-        for (int i = n * k; i < n * (k + 1); i ++)
-        {
-    
-        }
-    }   
+    fclose(fp);
 }
 
 void gen_vector(char *filename, int n, double *x)
@@ -163,7 +206,6 @@ void read_vector(char *filename, int n, double *x)
 
     char line[MAX_SIZE];
     int count = 0;
-
     while (fgets(line, sizeof(line), fp))
     {
         sscanf(line, "%lf", &x[count]);

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <mpi.h>
-#include <omp.h>
+//#include <mpi.h>
+//#include <omp.h>
 #include <sys/time.h>
 #include <time.h>
 
@@ -369,36 +369,15 @@ int main(int argc, char** argv)
     double * x_new = (double *)malloc(N * sizeof(double));
 
     // initialization 
-    // printf("b: ");
     for(int i = 0; i < N; i ++)
     {
         b[i] = (double)rand() / RAND_MAX + 1;  // random values [1, 2] 
-        // printf("%.3f ", b[i]);
         b_abs2 += b[i] * b[i];
     }
-    // printf("\n");
     double b_abs = sqrt(b_abs2); // pre-calculate ||b||
     printf("b_abs: %.3f\n", b_abs);
 
     generate_grid_CSR(n, indices, col_id, values);
-    //printf("Indices: ");
-/*    for (int i = 0; i <= N; i ++) 
-    {
-        printf("%d ", indices[i]);
-    }*/
-    //printf("\n");
-    //printf("Col_id: ");
-/*    for (int i = 0; i < indices[N]; i ++) 
-    {
-        printf("%d ", col_id[i]);
-    }*/
-    //printf("\n");
-    //printf("Values: ");
-/*    for (int i = 0; i < indices[N]; i ++) 
-    {
-        printf("%.3f ", values[i]);
-    } */
-    //printf("\n");
 
     char file1[50], file2[50], file3[50], file4[50];
     sprintf(file1, "jacobi_%d.txt", n);

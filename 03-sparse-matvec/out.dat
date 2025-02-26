@@ -1,0 +1,1832 @@
+Read: k = 0, row = 0, col = 0, A = 296965303
+Read: k = 1, row = 3, col = 0, A = 4507339373
+Complete symmetry: k = 376, row = 0, col = 3, A = 4507339373
+Read: k = 2, row = 4, col = 0, A = -296965303
+Complete symmetry: k = 377, row = 0, col = 4, A = -296965303
+Read: k = 3, row = 7, col = 0, A = 4507339373
+Complete symmetry: k = 378, row = 0, col = 7, A = 4507339373
+Read: k = 4, row = 1, col = 1, A = 296965303
+Read: k = 5, row = 2, col = 1, A = -4507339373
+Complete symmetry: k = 379, row = 1, col = 2, A = -4507339373
+Read: k = 6, row = 5, col = 1, A = -296965303
+Complete symmetry: k = 380, row = 1, col = 5, A = -296965303
+Read: k = 7, row = 6, col = 1, A = -4507339373
+Complete symmetry: k = 381, row = 1, col = 6, A = -4507339373
+Read: k = 8, row = 2, col = 2, A = 167239646968
+Read: k = 9, row = 5, col = 2, A = 4507339373
+Complete symmetry: k = 382, row = 2, col = 5, A = 4507339373
+Read: k = 10, row = 6, col = 2, A = -30414852966
+Complete symmetry: k = 383, row = 2, col = 6, A = -30414852966
+Read: k = 11, row = 3, col = 3, A = 167239646968
+Read: k = 12, row = 4, col = 3, A = -4507339373
+Complete symmetry: k = 384, row = 3, col = 4, A = -4507339373
+Read: k = 13, row = 7, col = 3, A = -30414852966
+Complete symmetry: k = 385, row = 3, col = 7, A = -30414852966
+Read: k = 14, row = 4, col = 4, A = 393237959
+Read: k = 15, row = 7, col = 4, A = -4138133736
+Complete symmetry: k = 386, row = 4, col = 7, A = -4138133736
+Read: k = 16, row = 8, col = 4, A = -96272656
+Complete symmetry: k = 387, row = 4, col = 8, A = -96272656
+Read: k = 17, row = 11, col = 4, A = 369205636
+Complete symmetry: k = 388, row = 4, col = 11, A = 369205636
+Read: k = 18, row = 5, col = 5, A = 393237959
+Read: k = 19, row = 6, col = 5, A = 4138133736
+Complete symmetry: k = 389, row = 5, col = 6, A = 4138133736
+Read: k = 20, row = 9, col = 5, A = -96272656
+Complete symmetry: k = 390, row = 5, col = 9, A = -96272656
+Read: k = 21, row = 10, col = 5, A = -369205636
+Complete symmetry: k = 391, row = 5, col = 10, A = -369205636
+Read: k = 22, row = 6, col = 6, A = 171258001691
+Read: k = 23, row = 9, col = 6, A = 369205636
+Complete symmetry: k = 392, row = 6, col = 9, A = 369205636
+Read: k = 24, row = 10, col = 6, A = -1186547493
+Complete symmetry: k = 393, row = 6, col = 10, A = -1186547493
+Read: k = 25, row = 7, col = 7, A = 171258001691
+Read: k = 26, row = 8, col = 7, A = -369205636
+Complete symmetry: k = 394, row = 7, col = 8, A = -369205636
+Read: k = 27, row = 11, col = 7, A = -1186547493
+Complete symmetry: k = 395, row = 7, col = 11, A = -1186547493
+Read: k = 28, row = 8, col = 8, A = 196873924
+Read: k = 29, row = 11, col = 8, A = 42562563
+Complete symmetry: k = 396, row = 8, col = 11, A = 42562563
+Read: k = 30, row = 12, col = 8, A = -100431268
+Complete symmetry: k = 397, row = 8, col = 12, A = -100431268
+Read: k = 31, row = 15, col = 8, A = 411768199
+Complete symmetry: k = 398, row = 8, col = 15, A = 411768199
+Read: k = 32, row = 9, col = 9, A = 196873924
+Read: k = 33, row = 10, col = 9, A = -42562563
+Complete symmetry: k = 399, row = 9, col = 10, A = -42562563
+Read: k = 34, row = 13, col = 9, A = -100431268
+Complete symmetry: k = 400, row = 9, col = 13, A = -100431268
+Read: k = 35, row = 14, col = 9, A = -411768199
+Complete symmetry: k = 401, row = 9, col = 14, A = -411768199
+Read: k = 36, row = 10, col = 10, A = 8484384829
+Read: k = 37, row = 13, col = 10, A = 411768199
+Complete symmetry: k = 402, row = 10, col = 13, A = 411768199
+Read: k = 38, row = 14, col = 10, A = -1089530870
+Complete symmetry: k = 403, row = 10, col = 14, A = -1089530870
+Read: k = 39, row = 11, col = 11, A = 8484384829
+Read: k = 40, row = 12, col = 11, A = -411768199
+Complete symmetry: k = 404, row = 11, col = 12, A = -411768199
+Read: k = 41, row = 15, col = 11, A = -1089530870
+Complete symmetry: k = 405, row = 11, col = 15, A = -1089530870
+Read: k = 42, row = 12, col = 12, A = 201032536
+Read: k = 43, row = 16, col = 12, A = -100431268
+Complete symmetry: k = 406, row = 12, col = 16, A = -100431268
+Read: k = 44, row = 19, col = 12, A = 411768199
+Complete symmetry: k = 407, row = 12, col = 19, A = 411768199
+Read: k = 45, row = 13, col = 13, A = 201032536
+Read: k = 46, row = 17, col = 13, A = -100431268
+Complete symmetry: k = 408, row = 13, col = 17, A = -100431268
+Read: k = 47, row = 18, col = 13, A = -411768199
+Complete symmetry: k = 409, row = 13, col = 18, A = -411768199
+Read: k = 48, row = 14, col = 14, A = 8932060211
+Read: k = 49, row = 17, col = 14, A = 411768199
+Complete symmetry: k = 410, row = 14, col = 17, A = 411768199
+Read: k = 50, row = 18, col = 14, A = -1089530870
+Complete symmetry: k = 411, row = 14, col = 18, A = -1089530870
+Read: k = 51, row = 15, col = 15, A = 8932060211
+Read: k = 52, row = 16, col = 15, A = -411768199
+Complete symmetry: k = 412, row = 15, col = 16, A = -411768199
+Read: k = 53, row = 19, col = 15, A = -1089530870
+Complete symmetry: k = 413, row = 15, col = 19, A = -1089530870
+Read: k = 54, row = 16, col = 16, A = 201032536
+Read: k = 55, row = 20, col = 16, A = -100431268
+Complete symmetry: k = 414, row = 16, col = 20, A = -100431268
+Read: k = 56, row = 23, col = 16, A = 411768199
+Complete symmetry: k = 415, row = 16, col = 23, A = 411768199
+Read: k = 57, row = 17, col = 17, A = 201032536
+Read: k = 58, row = 21, col = 17, A = -100431268
+Complete symmetry: k = 416, row = 17, col = 21, A = -100431268
+Read: k = 59, row = 22, col = 17, A = -411768199
+Complete symmetry: k = 417, row = 17, col = 22, A = -411768199
+Read: k = 60, row = 18, col = 18, A = 8932060211
+Read: k = 61, row = 21, col = 18, A = 411768199
+Complete symmetry: k = 418, row = 18, col = 21, A = 411768199
+Read: k = 62, row = 22, col = 18, A = -1089530870
+Complete symmetry: k = 419, row = 18, col = 22, A = -1089530870
+Read: k = 63, row = 19, col = 19, A = 8932060211
+Read: k = 64, row = 20, col = 19, A = -411768199
+Complete symmetry: k = 420, row = 19, col = 20, A = -411768199
+Read: k = 65, row = 23, col = 19, A = -1089530870
+Complete symmetry: k = 421, row = 19, col = 23, A = -1089530870
+Read: k = 66, row = 20, col = 20, A = 201032536
+Read: k = 67, row = 24, col = 20, A = -100431268
+Complete symmetry: k = 422, row = 20, col = 24, A = -100431268
+Read: k = 68, row = 27, col = 20, A = 411768199
+Complete symmetry: k = 423, row = 20, col = 27, A = 411768199
+Read: k = 69, row = 21, col = 21, A = 201032536
+Read: k = 70, row = 25, col = 21, A = -100431268
+Complete symmetry: k = 424, row = 21, col = 25, A = -100431268
+Read: k = 71, row = 26, col = 21, A = -411768199
+Complete symmetry: k = 425, row = 21, col = 26, A = -411768199
+Read: k = 72, row = 22, col = 22, A = 8932060211
+Read: k = 73, row = 25, col = 22, A = 411768199
+Complete symmetry: k = 426, row = 22, col = 25, A = 411768199
+Read: k = 74, row = 26, col = 22, A = -1089530870
+Complete symmetry: k = 427, row = 22, col = 26, A = -1089530870
+Read: k = 75, row = 23, col = 23, A = 8932060211
+Read: k = 76, row = 24, col = 23, A = -411768199
+Complete symmetry: k = 428, row = 23, col = 24, A = -411768199
+Read: k = 77, row = 27, col = 23, A = -1089530870
+Complete symmetry: k = 429, row = 23, col = 27, A = -1089530870
+Read: k = 78, row = 24, col = 24, A = 201032536
+Read: k = 79, row = 27, col = 24, A = 0
+Complete symmetry: k = 430, row = 24, col = 27, A = 0
+Read: k = 80, row = 28, col = 24, A = -100431268
+Complete symmetry: k = 431, row = 24, col = 28, A = -100431268
+Read: k = 81, row = 31, col = 24, A = 411768199
+Complete symmetry: k = 432, row = 24, col = 31, A = 411768199
+Read: k = 82, row = 25, col = 25, A = 201032536
+Read: k = 83, row = 26, col = 25, A = -0
+Complete symmetry: k = 433, row = 25, col = 26, A = -0
+Read: k = 84, row = 29, col = 25, A = -100431268
+Complete symmetry: k = 434, row = 25, col = 29, A = -100431268
+Read: k = 85, row = 30, col = 25, A = -411768199
+Complete symmetry: k = 435, row = 25, col = 30, A = -411768199
+Read: k = 86, row = 26, col = 26, A = 8932060211
+Read: k = 87, row = 29, col = 26, A = 411768199
+Complete symmetry: k = 436, row = 26, col = 29, A = 411768199
+Read: k = 88, row = 30, col = 26, A = -1089530870
+Complete symmetry: k = 437, row = 26, col = 30, A = -1089530870
+Read: k = 89, row = 27, col = 27, A = 8932060211
+Read: k = 90, row = 28, col = 27, A = -411768199
+Complete symmetry: k = 438, row = 27, col = 28, A = -411768199
+Read: k = 91, row = 31, col = 27, A = -1089530870
+Complete symmetry: k = 439, row = 27, col = 31, A = -1089530870
+Read: k = 92, row = 28, col = 28, A = 118560149
+Read: k = 93, row = 31, col = 28, A = -220955087
+Complete symmetry: k = 440, row = 28, col = 31, A = -220955087
+Read: k = 94, row = 32, col = 28, A = -17958881
+Complete symmetry: k = 441, row = 28, col = 32, A = -17958881
+Read: k = 95, row = 35, col = 28, A = 190813113
+Complete symmetry: k = 442, row = 28, col = 35, A = 190813113
+Read: k = 96, row = 29, col = 29, A = 118560149
+Read: k = 97, row = 30, col = 29, A = 220955087
+Complete symmetry: k = 443, row = 29, col = 30, A = 220955087
+Read: k = 98, row = 33, col = 29, A = -17958881
+Complete symmetry: k = 444, row = 29, col = 33, A = -17958881
+Read: k = 99, row = 34, col = 29, A = -190813113
+Complete symmetry: k = 445, row = 29, col = 34, A = -190813113
+Read: k = 100, row = 30, col = 30, A = 7565315898
+Read: k = 101, row = 33, col = 30, A = 190813113
+Complete symmetry: k = 446, row = 30, col = 33, A = 190813113
+Read: k = 102, row = 34, col = 30, A = 955492852
+Complete symmetry: k = 447, row = 30, col = 34, A = 955492852
+Read: k = 103, row = 31, col = 31, A = 7565315898
+Read: k = 104, row = 32, col = 31, A = -190813113
+Complete symmetry: k = 448, row = 31, col = 32, A = -190813113
+Read: k = 105, row = 35, col = 31, A = 955492852
+Complete symmetry: k = 449, row = 31, col = 35, A = 955492852
+Read: k = 106, row = 32, col = 32, A = 207459982
+Read: k = 107, row = 35, col = 32, A = 229121327
+Complete symmetry: k = 450, row = 32, col = 35, A = 229121327
+Read: k = 108, row = 36, col = 32, A = -189501101
+Complete symmetry: k = 451, row = 32, col = 36, A = -189501101
+Read: k = 109, row = 39, col = 32, A = 419934439
+Complete symmetry: k = 452, row = 32, col = 39, A = 419934439
+Read: k = 110, row = 33, col = 33, A = 207459982
+Read: k = 111, row = 34, col = 33, A = -229121327
+Complete symmetry: k = 453, row = 33, col = 34, A = -229121327
+Read: k = 112, row = 37, col = 33, A = -189501101
+Complete symmetry: k = 454, row = 33, col = 37, A = -189501101
+Read: k = 113, row = 38, col = 33, A = -419934439
+Complete symmetry: k = 455, row = 33, col = 38, A = -419934439
+Read: k = 114, row = 34, col = 34, A = 8533651124
+Read: k = 115, row = 37, col = 34, A = 419934439
+Complete symmetry: k = 456, row = 34, col = 37, A = 419934439
+Read: k = 116, row = 38, col = 34, A = -3573215896
+Complete symmetry: k = 457, row = 34, col = 38, A = -3573215896
+Read: k = 117, row = 35, col = 35, A = 8533651124
+Read: k = 118, row = 36, col = 35, A = -419934439
+Complete symmetry: k = 458, row = 35, col = 36, A = -419934439
+Read: k = 119, row = 39, col = 35, A = -3573215896
+Complete symmetry: k = 459, row = 35, col = 39, A = -3573215896
+Read: k = 120, row = 36, col = 36, A = 189831384
+Read: k = 121, row = 39, col = 36, A = -405856110
+Complete symmetry: k = 460, row = 36, col = 39, A = -405856110
+Read: k = 122, row = 40, col = 36, A = -330283
+Complete symmetry: k = 461, row = 36, col = 40, A = -330283
+Read: k = 123, row = 43, col = 36, A = 14078329
+Complete symmetry: k = 462, row = 36, col = 43, A = 14078329
+Read: k = 124, row = 37, col = 37, A = 189831384
+Read: k = 125, row = 38, col = 37, A = 405856110
+Complete symmetry: k = 463, row = 37, col = 38, A = 405856110
+Read: k = 126, row = 41, col = 37, A = -330283
+Complete symmetry: k = 464, row = 37, col = 41, A = -330283
+Read: k = 127, row = 42, col = 37, A = -14078329
+Complete symmetry: k = 465, row = 37, col = 42, A = -14078329
+Read: k = 128, row = 38, col = 38, A = 6241431243
+Read: k = 129, row = 41, col = 38, A = 14078329
+Complete symmetry: k = 466, row = 38, col = 41, A = 14078329
+Read: k = 130, row = 42, col = 38, A = 393111660
+Complete symmetry: k = 467, row = 38, col = 42, A = 393111660
+Read: k = 131, row = 39, col = 39, A = 6241431243
+Read: k = 132, row = 40, col = 39, A = -14078329
+Complete symmetry: k = 468, row = 39, col = 40, A = -14078329
+Read: k = 133, row = 43, col = 39, A = 393111660
+Complete symmetry: k = 469, row = 39, col = 43, A = 393111660
+Read: k = 134, row = 40, col = 40, A = 42437449
+Read: k = 135, row = 43, col = 40, A = 257197087
+Complete symmetry: k = 470, row = 40, col = 43, A = 257197087
+Read: k = 136, row = 44, col = 40, A = -42107166
+Complete symmetry: k = 471, row = 40, col = 44, A = -42107166
+Read: k = 137, row = 47, col = 40, A = 271275416
+Complete symmetry: k = 472, row = 40, col = 47, A = 271275416
+Read: k = 138, row = 41, col = 41, A = 42437449
+Read: k = 139, row = 42, col = 41, A = -257197087
+Complete symmetry: k = 473, row = 41, col = 42, A = -257197087
+Read: k = 140, row = 45, col = 41, A = -42107166
+Complete symmetry: k = 474, row = 41, col = 45, A = -42107166
+Read: k = 141, row = 46, col = 41, A = -271275416
+Complete symmetry: k = 475, row = 41, col = 46, A = -271275416
+Read: k = 142, row = 42, col = 42, A = 4057458594
+Read: k = 143, row = 45, col = 42, A = 271275416
+Complete symmetry: k = 476, row = 42, col = 45, A = 271275416
+Read: k = 144, row = 46, col = 42, A = 244991052
+Complete symmetry: k = 477, row = 42, col = 46, A = 244991052
+Read: k = 145, row = 43, col = 43, A = 4057458594
+Read: k = 146, row = 44, col = 43, A = -271275416
+Complete symmetry: k = 478, row = 43, col = 44, A = -271275416
+Read: k = 147, row = 47, col = 43, A = 244991052
+Complete symmetry: k = 479, row = 43, col = 47, A = 244991052
+Read: k = 148, row = 44, col = 44, A = 43166558
+Read: k = 149, row = 47, col = 44, A = -250959150
+Complete symmetry: k = 480, row = 44, col = 47, A = -250959150
+Read: k = 150, row = 48, col = 44, A = -550092
+Complete symmetry: k = 481, row = 44, col = 48, A = -550092
+Read: k = 151, row = 51, col = 44, A = 20316266
+Complete symmetry: k = 482, row = 44, col = 51, A = 20316266
+Read: k = 152, row = 45, col = 45, A = 43166558
+Read: k = 153, row = 46, col = 45, A = 250959150
+Complete symmetry: k = 483, row = 45, col = 46, A = 250959150
+Read: k = 154, row = 49, col = 45, A = -550092
+Complete symmetry: k = 484, row = 45, col = 49, A = -550092
+Read: k = 155, row = 50, col = 45, A = -20316266
+Complete symmetry: k = 485, row = 45, col = 50, A = -20316266
+Read: k = 156, row = 46, col = 46, A = 4262854087
+Read: k = 157, row = 49, col = 46, A = 20316266
+Complete symmetry: k = 486, row = 46, col = 49, A = 20316266
+Read: k = 158, row = 50, col = 46, A = 488199576
+Complete symmetry: k = 487, row = 46, col = 50, A = 488199576
+Read: k = 159, row = 47, col = 47, A = 4262854087
+Read: k = 160, row = 48, col = 47, A = -20316266
+Complete symmetry: k = 488, row = 47, col = 48, A = -20316266
+Read: k = 161, row = 51, col = 47, A = 488199576
+Complete symmetry: k = 489, row = 47, col = 51, A = 488199576
+Read: k = 162, row = 48, col = 48, A = 583761
+Read: k = 163, row = 51, col = 48, A = -17216557
+Complete symmetry: k = 490, row = 48, col = 51, A = -17216557
+Read: k = 164, row = 52, col = 48, A = -33670
+Complete symmetry: k = 491, row = 48, col = 52, A = -33670
+Read: k = 165, row = 55, col = 48, A = 3099709
+Complete symmetry: k = 492, row = 48, col = 55, A = 3099709
+Read: k = 166, row = 49, col = 49, A = 583761
+Read: k = 167, row = 50, col = 49, A = 17216557
+Complete symmetry: k = 493, row = 49, col = 50, A = 17216557
+Read: k = 168, row = 53, col = 49, A = -33670
+Complete symmetry: k = 494, row = 49, col = 53, A = -33670
+Read: k = 169, row = 54, col = 49, A = -3099709
+Complete symmetry: k = 495, row = 49, col = 54, A = -3099709
+Read: k = 170, row = 50, col = 50, A = 1393658878
+Read: k = 171, row = 53, col = 50, A = 3099709
+Complete symmetry: k = 496, row = 50, col = 53, A = 3099709
+Read: k = 172, row = 54, col = 50, A = 189536373
+Complete symmetry: k = 497, row = 50, col = 54, A = 189536373
+Read: k = 173, row = 51, col = 51, A = 1393658878
+Read: k = 174, row = 52, col = 51, A = -3099709
+Complete symmetry: k = 498, row = 51, col = 52, A = -3099709
+Read: k = 175, row = 55, col = 51, A = 189536373
+Complete symmetry: k = 499, row = 51, col = 55, A = 189536373
+Read: k = 176, row = 52, col = 52, A = 38798238
+Read: k = 177, row = 55, col = 52, A = 255072315
+Complete symmetry: k = 500, row = 52, col = 55, A = 255072315
+Read: k = 178, row = 56, col = 52, A = -38764568
+Complete symmetry: k = 501, row = 52, col = 56, A = -38764568
+Read: k = 179, row = 59, col = 52, A = 258172023
+Complete symmetry: k = 502, row = 52, col = 59, A = 258172023
+Read: k = 180, row = 53, col = 53, A = 38798238
+Read: k = 181, row = 54, col = 53, A = -255072315
+Complete symmetry: k = 503, row = 53, col = 54, A = -255072315
+Read: k = 182, row = 57, col = 53, A = -38764568
+Complete symmetry: k = 504, row = 53, col = 57, A = -38764568
+Read: k = 183, row = 58, col = 53, A = -258172023
+Complete symmetry: k = 505, row = 53, col = 58, A = -258172023
+Read: k = 184, row = 54, col = 54, A = 3510285310
+Read: k = 185, row = 57, col = 54, A = 258172023
+Complete symmetry: k = 506, row = 54, col = 57, A = 258172023
+Read: k = 186, row = 58, col = 54, A = 309763513
+Complete symmetry: k = 507, row = 54, col = 58, A = 309763513
+Read: k = 187, row = 55, col = 55, A = 3510285310
+Read: k = 188, row = 56, col = 55, A = -258172023
+Complete symmetry: k = 508, row = 55, col = 56, A = -258172023
+Read: k = 189, row = 59, col = 55, A = 309763513
+Complete symmetry: k = 509, row = 55, col = 59, A = 309763513
+Read: k = 190, row = 56, col = 56, A = 40183436
+Read: k = 191, row = 59, col = 56, A = -230234656
+Complete symmetry: k = 510, row = 56, col = 59, A = -230234656
+Read: k = 192, row = 60, col = 56, A = -909568
+Complete symmetry: k = 511, row = 56, col = 60, A = -909568
+Read: k = 193, row = 63, col = 56, A = 27937368
+Complete symmetry: k = 512, row = 56, col = 63, A = 27937368
+Read: k = 194, row = 57, col = 57, A = 40183436
+Read: k = 195, row = 58, col = 57, A = 230234656
+Complete symmetry: k = 513, row = 57, col = 58, A = 230234656
+Read: k = 196, row = 61, col = 57, A = -909568
+Complete symmetry: k = 514, row = 57, col = 61, A = -909568
+Read: k = 197, row = 62, col = 57, A = -27937368
+Complete symmetry: k = 515, row = 57, col = 62, A = -27937368
+Read: k = 198, row = 58, col = 58, A = 4292844182
+Read: k = 199, row = 61, col = 58, A = 27937368
+Complete symmetry: k = 516, row = 58, col = 61, A = 27937368
+Read: k = 200, row = 62, col = 58, A = 552436143
+Complete symmetry: k = 517, row = 58, col = 62, A = 552436143
+Read: k = 201, row = 59, col = 59, A = 4292844182
+Read: k = 202, row = 60, col = 59, A = -27937368
+Complete symmetry: k = 518, row = 59, col = 60, A = -27937368
+Read: k = 203, row = 63, col = 59, A = 552436143
+Complete symmetry: k = 519, row = 59, col = 63, A = 552436143
+Read: k = 204, row = 60, col = 60, A = 3409726
+Read: k = 205, row = 63, col = 60, A = 24565961
+Complete symmetry: k = 520, row = 60, col = 63, A = 24565961
+Read: k = 206, row = 64, col = 60, A = -2500159
+Complete symmetry: k = 521, row = 60, col = 64, A = -2500159
+Read: k = 207, row = 67, col = 60, A = 52503329
+Complete symmetry: k = 522, row = 60, col = 67, A = 52503329
+Read: k = 208, row = 61, col = 61, A = 3409726
+Read: k = 209, row = 62, col = 61, A = -24565961
+Complete symmetry: k = 523, row = 61, col = 62, A = -24565961
+Read: k = 210, row = 65, col = 61, A = -2500159
+Complete symmetry: k = 524, row = 61, col = 65, A = -2500159
+Read: k = 211, row = 66, col = 61, A = -52503329
+Complete symmetry: k = 525, row = 61, col = 66, A = -52503329
+Read: k = 212, row = 62, col = 62, A = 2686440534
+Read: k = 213, row = 65, col = 62, A = 52503329
+Complete symmetry: k = 526, row = 62, col = 65, A = 52503329
+Read: k = 214, row = 66, col = 62, A = 682455618
+Complete symmetry: k = 527, row = 62, col = 66, A = 682455618
+Read: k = 215, row = 63, col = 63, A = 2686440534
+Read: k = 216, row = 64, col = 63, A = -52503329
+Complete symmetry: k = 528, row = 63, col = 64, A = -52503329
+Read: k = 217, row = 67, col = 63, A = 682455618
+Complete symmetry: k = 529, row = 63, col = 67, A = 682455618
+Read: k = 218, row = 64, col = 64, A = 8801000
+Read: k = 219, row = 67, col = 64, A = 42009297
+Complete symmetry: k = 530, row = 64, col = 67, A = 42009297
+Read: k = 220, row = 68, col = 64, A = -6300842
+Complete symmetry: k = 531, row = 64, col = 68, A = -6300842
+Read: k = 221, row = 71, col = 64, A = 94512626
+Complete symmetry: k = 532, row = 64, col = 71, A = 94512626
+Read: k = 222, row = 65, col = 65, A = 8801000
+Read: k = 223, row = 66, col = 65, A = -42009297
+Complete symmetry: k = 533, row = 65, col = 66, A = -42009297
+Read: k = 224, row = 69, col = 65, A = -6300842
+Complete symmetry: k = 534, row = 65, col = 69, A = -6300842
+Read: k = 225, row = 70, col = 65, A = -94512626
+Complete symmetry: k = 535, row = 65, col = 70, A = -94512626
+Read: k = 226, row = 66, col = 66, A = 3547183581
+Read: k = 227, row = 69, col = 66, A = 94512626
+Complete symmetry: k = 536, row = 66, col = 69, A = 94512626
+Read: k = 228, row = 70, col = 66, A = 810879391
+Complete symmetry: k = 537, row = 66, col = 70, A = 810879391
+Read: k = 229, row = 67, col = 67, A = 3547183581
+Read: k = 230, row = 68, col = 67, A = -94512626
+Complete symmetry: k = 538, row = 67, col = 68, A = -94512626
+Read: k = 231, row = 71, col = 67, A = 810879391
+Complete symmetry: k = 539, row = 67, col = 71, A = 810879391
+Read: k = 232, row = 68, col = 68, A = 12601683
+Read: k = 233, row = 72, col = 68, A = -6300842
+Complete symmetry: k = 540, row = 68, col = 72, A = -6300842
+Read: k = 234, row = 75, col = 68, A = 94512626
+Complete symmetry: k = 541, row = 68, col = 75, A = 94512626
+Read: k = 235, row = 69, col = 69, A = 12601683
+Read: k = 236, row = 73, col = 69, A = -6300842
+Complete symmetry: k = 542, row = 69, col = 73, A = -6300842
+Read: k = 237, row = 74, col = 69, A = -94512626
+Complete symmetry: k = 543, row = 69, col = 74, A = -94512626
+Read: k = 238, row = 70, col = 70, A = 4048998782
+Read: k = 239, row = 73, col = 70, A = 94512626
+Complete symmetry: k = 544, row = 70, col = 73, A = 94512626
+Read: k = 240, row = 74, col = 70, A = 810879391
+Complete symmetry: k = 545, row = 70, col = 74, A = 810879391
+Read: k = 241, row = 71, col = 71, A = 4048998782
+Read: k = 242, row = 72, col = 71, A = -94512626
+Complete symmetry: k = 546, row = 71, col = 72, A = -94512626
+Read: k = 243, row = 75, col = 71, A = 810879391
+Complete symmetry: k = 547, row = 71, col = 75, A = 810879391
+Read: k = 244, row = 72, col = 72, A = 28373429
+Read: k = 245, row = 75, col = 72, A = 170358422
+Complete symmetry: k = 548, row = 72, col = 75, A = 170358422
+Read: k = 246, row = 76, col = 72, A = -22072587
+Complete symmetry: k = 549, row = 72, col = 76, A = -22072587
+Read: k = 247, row = 79, col = 72, A = 264871048
+Complete symmetry: k = 550, row = 72, col = 79, A = 264871048
+Read: k = 248, row = 73, col = 73, A = 28373429
+Read: k = 249, row = 74, col = 73, A = -170358422
+Complete symmetry: k = 551, row = 73, col = 74, A = -170358422
+Read: k = 250, row = 77, col = 73, A = -22072587
+Complete symmetry: k = 552, row = 73, col = 77, A = -22072587
+Read: k = 251, row = 78, col = 73, A = -264871048
+Complete symmetry: k = 553, row = 73, col = 78, A = -264871048
+Read: k = 252, row = 74, col = 74, A = 6930451964
+Read: k = 253, row = 77, col = 74, A = 264871048
+Complete symmetry: k = 554, row = 74, col = 77, A = 264871048
+Read: k = 254, row = 78, col = 74, A = 1450952572
+Complete symmetry: k = 555, row = 74, col = 78, A = 1450952572
+Read: k = 255, row = 75, col = 75, A = 6930451964
+Read: k = 256, row = 76, col = 75, A = -264871048
+Complete symmetry: k = 556, row = 75, col = 76, A = -264871048
+Read: k = 257, row = 79, col = 75, A = 1450952572
+Complete symmetry: k = 557, row = 75, col = 79, A = 1450952572
+Read: k = 258, row = 76, col = 76, A = 23543789
+Read: k = 259, row = 79, col = 76, A = -235520568
+Complete symmetry: k = 558, row = 76, col = 79, A = -235520568
+Read: k = 260, row = 80, col = 76, A = -1471202
+Complete symmetry: k = 559, row = 76, col = 80, A = -1471202
+Read: k = 261, row = 83, col = 76, A = 29350479
+Complete symmetry: k = 560, row = 76, col = 83, A = 29350479
+Read: k = 262, row = 77, col = 77, A = 23543789
+Read: k = 263, row = 78, col = 77, A = 235520568
+Complete symmetry: k = 561, row = 77, col = 78, A = 235520568
+Read: k = 264, row = 81, col = 77, A = -1471202
+Complete symmetry: k = 562, row = 77, col = 81, A = -1471202
+Read: k = 265, row = 82, col = 77, A = -29350479
+Complete symmetry: k = 563, row = 77, col = 82, A = -29350479
+Read: k = 266, row = 78, col = 78, A = 5710148773
+Read: k = 267, row = 81, col = 78, A = 29350479
+Complete symmetry: k = 564, row = 78, col = 81, A = 29350479
+Read: k = 268, row = 82, col = 78, A = 366887930
+Complete symmetry: k = 565, row = 78, col = 82, A = 366887930
+Read: k = 269, row = 79, col = 79, A = 5710148773
+Read: k = 270, row = 80, col = 79, A = -29350479
+Complete symmetry: k = 566, row = 79, col = 80, A = -29350479
+Read: k = 271, row = 83, col = 79, A = 366887930
+Complete symmetry: k = 567, row = 79, col = 83, A = 366887930
+Read: k = 272, row = 80, col = 80, A = 9441905
+Read: k = 273, row = 83, col = 80, A = -27046372
+Complete symmetry: k = 568, row = 80, col = 83, A = -27046372
+Read: k = 274, row = 84, col = 80, A = -30703
+Complete symmetry: k = 569, row = 80, col = 84, A = -30703
+Read: k = 275, row = 87, col = 80, A = 2304107
+Complete symmetry: k = 570, row = 80, col = 87, A = 2304107
+Read: k = 276, row = 81, col = 81, A = 29001905
+Read: k = 277, row = 82, col = 81, A = 27046372
+Complete symmetry: k = 571, row = 81, col = 82, A = 27046372
+Read: k = 278, row = 85, col = 81, A = -30703
+Complete symmetry: k = 572, row = 81, col = 85, A = -30703
+Read: k = 279, row = 86, col = 81, A = -2304107
+Complete symmetry: k = 573, row = 81, col = 86, A = -2304107
+Read: k = 280, row = 82, col = 82, A = 1035235070
+Read: k = 281, row = 85, col = 82, A = 2304107
+Complete symmetry: k = 574, row = 82, col = 85, A = 2304107
+Read: k = 282, row = 86, col = 82, A = 114784622
+Complete symmetry: k = 575, row = 82, col = 86, A = 114784622
+Read: k = 283, row = 83, col = 83, A = 1035235070
+Read: k = 284, row = 84, col = 83, A = -2304107
+Complete symmetry: k = 576, row = 83, col = 84, A = -2304107
+Read: k = 285, row = 87, col = 83, A = 114784622
+Complete symmetry: k = 577, row = 83, col = 87, A = 114784622
+Read: k = 286, row = 84, col = 84, A = 112446
+Read: k = 287, row = 87, col = 84, A = 2110420
+Complete symmetry: k = 578, row = 84, col = 87, A = 2110420
+Read: k = 288, row = 88, col = 84, A = -81743
+Complete symmetry: k = 579, row = 84, col = 88, A = -81743
+Read: k = 289, row = 91, col = 84, A = 4414527
+Complete symmetry: k = 580, row = 84, col = 91, A = 4414527
+Read: k = 290, row = 85, col = 85, A = 112446
+Read: k = 291, row = 86, col = 85, A = -2110420
+Complete symmetry: k = 581, row = 85, col = 86, A = -2110420
+Read: k = 292, row = 89, col = 85, A = -81743
+Complete symmetry: k = 582, row = 85, col = 89, A = -81743
+Read: k = 293, row = 90, col = 85, A = -4414527
+Complete symmetry: k = 583, row = 85, col = 90, A = -4414527
+Read: k = 294, row = 86, col = 86, A = 550218480
+Read: k = 295, row = 89, col = 86, A = 4414527
+Complete symmetry: k = 584, row = 86, col = 89, A = 4414527
+Read: k = 296, row = 90, col = 86, A = 157633458
+Complete symmetry: k = 585, row = 86, col = 90, A = 157633458
+Read: k = 297, row = 87, col = 87, A = 550218480
+Read: k = 298, row = 88, col = 87, A = -4414527
+Complete symmetry: k = 586, row = 87, col = 88, A = -4414527
+Read: k = 299, row = 91, col = 87, A = 157633458
+Complete symmetry: k = 587, row = 87, col = 91, A = 157633458
+Read: k = 300, row = 88, col = 88, A = 7356559
+Read: k = 301, row = 91, col = 88, A = 74699095
+Complete symmetry: k = 588, row = 88, col = 91, A = 74699095
+Read: k = 302, row = 92, col = 88, A = -7274816
+Complete symmetry: k = 589, row = 88, col = 92, A = -7274816
+Read: k = 303, row = 95, col = 88, A = 79113623
+Complete symmetry: k = 590, row = 88, col = 95, A = 79113623
+Read: k = 304, row = 89, col = 89, A = 7356559
+Read: k = 305, row = 90, col = 89, A = -74699095
+Complete symmetry: k = 591, row = 89, col = 90, A = -74699095
+Read: k = 306, row = 93, col = 89, A = -7274816
+Complete symmetry: k = 592, row = 89, col = 93, A = -7274816
+Read: k = 307, row = 94, col = 89, A = -79113623
+Complete symmetry: k = 593, row = 89, col = 94, A = -79113623
+Read: k = 308, row = 90, col = 90, A = 1603747152
+Read: k = 309, row = 93, col = 90, A = 79113623
+Complete symmetry: k = 594, row = 90, col = 93, A = 79113623
+Read: k = 310, row = 94, col = 90, A = 436153748
+Complete symmetry: k = 595, row = 90, col = 94, A = 436153748
+Read: k = 311, row = 91, col = 91, A = 1603747152
+Read: k = 312, row = 92, col = 91, A = -79113623
+Complete symmetry: k = 596, row = 91, col = 92, A = -79113623
+Read: k = 313, row = 95, col = 91, A = 436153748
+Complete symmetry: k = 597, row = 91, col = 95, A = 436153748
+Read: k = 314, row = 92, col = 92, A = 34924195
+Read: k = 315, row = 95, col = 92, A = 77105368
+Complete symmetry: k = 598, row = 92, col = 95, A = 77105368
+Read: k = 316, row = 96, col = 92, A = -27649379
+Complete symmetry: k = 599, row = 92, col = 96, A = -27649379
+Read: k = 317, row = 99, col = 92, A = 156218991
+Complete symmetry: k = 600, row = 92, col = 99, A = 156218991
+Read: k = 318, row = 93, col = 93, A = 34924195
+Read: k = 319, row = 94, col = 93, A = -77105368
+Complete symmetry: k = 601, row = 93, col = 94, A = -77105368
+Read: k = 320, row = 97, col = 93, A = -27649379
+Complete symmetry: k = 602, row = 93, col = 97, A = -27649379
+Read: k = 321, row = 98, col = 93, A = -156218991
+Complete symmetry: k = 603, row = 93, col = 98, A = -156218991
+Read: k = 322, row = 94, col = 94, A = 2983709265
+Read: k = 323, row = 97, col = 94, A = 156218991
+Complete symmetry: k = 604, row = 94, col = 97, A = 156218991
+Read: k = 324, row = 98, col = 94, A = 66132874
+Complete symmetry: k = 605, row = 94, col = 98, A = 66132874
+Read: k = 325, row = 95, col = 95, A = 2983709265
+Read: k = 326, row = 96, col = 95, A = -156218991
+Complete symmetry: k = 606, row = 95, col = 96, A = -156218991
+Read: k = 327, row = 99, col = 95, A = 66132874
+Complete symmetry: k = 607, row = 95, col = 99, A = 66132874
+Read: k = 328, row = 96, col = 96, A = 48551841
+Read: k = 329, row = 99, col = 96, A = -53359541
+Complete symmetry: k = 608, row = 96, col = 99, A = -53359541
+Read: k = 330, row = 100, col = 96, A = -11655462
+Complete symmetry: k = 609, row = 96, col = 100, A = -11655462
+Read: k = 331, row = 103, col = 96, A = 102859450
+Complete symmetry: k = 610, row = 96, col = 103, A = 102859450
+Read: k = 332, row = 97, col = 97, A = 52768841
+Read: k = 333, row = 98, col = 97, A = 53359541
+Complete symmetry: k = 611, row = 97, col = 98, A = 53359541
+Read: k = 334, row = 101, col = 97, A = -11655462
+Complete symmetry: k = 612, row = 97, col = 101, A = -11655462
+Read: k = 335, row = 102, col = 97, A = -102859450
+Complete symmetry: k = 613, row = 97, col = 102, A = -102859450
+Read: k = 336, row = 98, col = 98, A = 3129624247
+Read: k = 337, row = 101, col = 98, A = 102859450
+Complete symmetry: k = 614, row = 98, col = 101, A = 102859450
+Read: k = 338, row = 102, col = 98, A = 384986772
+Complete symmetry: k = 615, row = 98, col = 102, A = 384986772
+Read: k = 339, row = 99, col = 99, A = 3129624247
+Read: k = 340, row = 100, col = 99, A = -102859450
+Complete symmetry: k = 616, row = 99, col = 100, A = -102859450
+Read: k = 341, row = 103, col = 99, A = 384986772
+Complete symmetry: k = 617, row = 99, col = 103, A = 384986772
+Read: k = 342, row = 100, col = 100, A = 22825330
+Read: k = 343, row = 103, col = 100, A = -2330634
+Complete symmetry: k = 618, row = 100, col = 103, A = -2330634
+Read: k = 344, row = 104, col = 100, A = -11169868
+Complete symmetry: k = 619, row = 100, col = 104, A = -11169868
+Read: k = 345, row = 107, col = 100, A = 100528816
+Complete symmetry: k = 620, row = 100, col = 107, A = 100528816
+Read: k = 346, row = 101, col = 101, A = 22825330
+Read: k = 347, row = 102, col = 101, A = 2330634
+Complete symmetry: k = 621, row = 101, col = 102, A = 2330634
+Read: k = 348, row = 105, col = 101, A = -11169868
+Complete symmetry: k = 622, row = 101, col = 105, A = -11169868
+Read: k = 349, row = 106, col = 101, A = -100528816
+Complete symmetry: k = 623, row = 101, col = 106, A = -100528816
+Read: k = 350, row = 102, col = 102, A = 2847825200
+Read: k = 351, row = 105, col = 102, A = 100528816
+Complete symmetry: k = 624, row = 102, col = 105, A = 100528816
+Read: k = 352, row = 106, col = 102, A = 392176011
+Complete symmetry: k = 625, row = 102, col = 106, A = 392176011
+Read: k = 353, row = 103, col = 103, A = 2847825200
+Read: k = 354, row = 104, col = 103, A = -100528816
+Complete symmetry: k = 626, row = 103, col = 104, A = -100528816
+Read: k = 355, row = 107, col = 103, A = 392176011
+Complete symmetry: k = 627, row = 103, col = 107, A = 392176011
+Read: k = 356, row = 104, col = 104, A = 80076045
+Read: k = 357, row = 107, col = 104, A = 102312385
+Complete symmetry: k = 628, row = 104, col = 107, A = 102312385
+Read: k = 358, row = 108, col = 104, A = -59659177
+Complete symmetry: k = 629, row = 104, col = 108, A = -59659177
+Read: k = 359, row = 111, col = 104, A = 202841201
+Complete symmetry: k = 630, row = 104, col = 111, A = 202841201
+Read: k = 360, row = 105, col = 105, A = 84293045
+Read: k = 361, row = 106, col = 105, A = -102312385
+Complete symmetry: k = 631, row = 105, col = 106, A = -102312385
+Read: k = 362, row = 109, col = 105, A = -59659177
+Complete symmetry: k = 632, row = 105, col = 109, A = -59659177
+Read: k = 363, row = 110, col = 105, A = -202841201
+Complete symmetry: k = 633, row = 105, col = 110, A = -202841201
+Read: k = 364, row = 106, col = 106, A = 3463840995
+Read: k = 365, row = 109, col = 106, A = 202841201
+Complete symmetry: k = 634, row = 106, col = 109, A = 202841201
+Read: k = 366, row = 110, col = 106, A = -667178153
+Complete symmetry: k = 635, row = 106, col = 110, A = -667178153
+Read: k = 367, row = 107, col = 107, A = 3463840995
+Read: k = 368, row = 108, col = 107, A = -202841201
+Complete symmetry: k = 636, row = 107, col = 108, A = -202841201
+Read: k = 369, row = 111, col = 107, A = -667178153
+Complete symmetry: k = 637, row = 107, col = 111, A = -667178153
+Read: k = 370, row = 108, col = 108, A = 59659177
+Read: k = 371, row = 111, col = 108, A = -202841201
+Complete symmetry: k = 638, row = 108, col = 111, A = -202841201
+Read: k = 372, row = 109, col = 109, A = 59659177
+Read: k = 373, row = 110, col = 109, A = 202841201
+Complete symmetry: k = 639, row = 109, col = 110, A = 202841201
+Read: k = 374, row = 110, col = 110, A = 2046498317
+Read: k = 375, row = 111, col = 111, A = 2046498317
+Matrix: CSR not sorted
+0 0 296965303.256000
+1 3 4507339372.820000
+2 4 -296965303.256000
+3 7 4507339372.820000
+4 113 296965303.256000
+5 114 -4507339372.820000
+6 117 -296965303.256000
+7 118 -4507339372.820000
+8 226 167239646968.000000
+9 229 4507339372.820000
+10 230 -30414852966.400002
+11 339 167239646968.000000
+12 340 -4507339372.820000
+13 343 -30414852966.400002
+14 452 393237959.405000
+15 455 -4138133736.490000
+16 456 -96272656.149300
+17 459 369205636.333000
+18 565 393237959.405000
+19 566 4138133736.490000
+20 569 -96272656.149300
+21 570 -369205636.333000
+22 678 171258001691.000000
+23 681 369205636.333000
+24 682 -1186547492.880000
+25 791 171258001691.000000
+26 792 -369205636.333000
+27 795 -1186547492.880000
+28 904 196873924.302000
+29 907 42562563.091900
+30 908 -100431268.152000
+31 911 411768199.424000
+32 1017 196873924.302000
+33 1018 -42562563.091900
+34 1021 -100431268.152000
+35 1022 -411768199.424000
+36 1130 8484384828.990000
+37 1133 411768199.424000
+38 1134 -1089530870.170000
+39 1243 8484384828.990000
+40 1244 -411768199.424000
+41 1247 -1089530870.170000
+42 1356 201032536.305000
+43 1360 -100431268.152000
+44 1363 411768199.424000
+45 1469 201032536.305000
+46 1473 -100431268.152000
+47 1474 -411768199.424000
+48 1582 8932060210.889999
+49 1585 411768199.424000
+50 1586 -1089530870.170000
+51 1695 8932060210.889999
+52 1696 -411768199.424000
+53 1699 -1089530870.170000
+54 1808 201032536.305000
+55 1812 -100431268.152000
+56 1815 411768199.424000
+57 1921 201032536.305000
+58 1925 -100431268.152000
+59 1926 -411768199.424000
+60 2034 8932060210.889999
+61 2037 411768199.424000
+62 2038 -1089530870.170000
+63 2147 8932060210.889999
+64 2148 -411768199.424000
+65 2151 -1089530870.170000
+66 2260 201032536.305000
+67 2264 -100431268.152000
+68 2267 411768199.424000
+69 2373 201032536.305000
+70 2377 -100431268.152000
+71 2378 -411768199.424000
+72 2486 8932060210.889999
+73 2489 411768199.424000
+74 2490 -1089530870.170000
+75 2599 8932060210.889999
+76 2600 -411768199.424000
+77 2603 -1089530870.170000
+78 2712 201032536.305000
+79 2715 0.000005
+80 2716 -100431268.152000
+81 2719 411768199.424000
+82 2825 201032536.305000
+83 2826 -0.000005
+84 2829 -100431268.152000
+85 2830 -411768199.424000
+86 2938 8932060210.889999
+87 2941 411768199.424000
+88 2942 -1089530870.170000
+89 3051 8932060210.889999
+90 3052 -411768199.424000
+91 3055 -1089530870.170000
+92 3164 118560149.348000
+93 3167 -220955086.724000
+94 3168 -17958881.195400
+95 3171 190813112.701000
+96 3277 118560149.348000
+97 3278 220955086.724000
+98 3281 -17958881.195400
+99 3282 -190813112.701000
+100 3390 7565315898.480000
+101 3393 190813112.701000
+102 3394 955492851.856000
+103 3503 7565315898.480000
+104 3504 -190813112.701000
+105 3507 955492851.856000
+106 3616 207459981.986000
+107 3619 229121326.651000
+108 3620 -189501100.790000
+109 3623 419934439.351000
+110 3729 207459981.986000
+111 3730 -229121326.651000
+112 3733 -189501100.790000
+113 3734 -419934439.351000
+114 3842 8533651124.350000
+115 3845 419934439.351000
+116 3846 -3573215896.120000
+117 3955 8533651124.350000
+118 3956 -419934439.351000
+119 3959 -3573215896.120000
+120 4068 189831384.175000
+121 4071 -405856110.066000
+122 4072 -330283.384982
+123 4075 14078329.284900
+124 4181 189831384.175000
+125 4182 405856110.066000
+126 4185 -330283.384982
+127 4186 -14078329.284900
+128 4294 6241431243.190000
+129 4297 14078329.284900
+130 4298 393111659.667000
+131 4407 6241431243.190000
+132 4408 -14078329.284900
+133 4411 393111659.667000
+134 4520 42437449.228000
+135 4523 257197086.659000
+136 4524 -42107165.843000
+137 4527 271275415.944000
+138 4633 42437449.228000
+139 4634 -257197086.659000
+140 4637 -42107165.843000
+141 4638 -271275415.944000
+142 4746 4057458593.980000
+143 4749 271275415.944000
+144 4750 244991052.316000
+145 4859 4057458593.980000
+146 4860 -271275415.944000
+147 4863 244991052.316000
+148 4972 43166557.656700
+149 4975 -250959150.035000
+150 4976 -550091.813682
+151 4979 20316265.908800
+152 5085 43166557.656700
+153 5086 250959150.035000
+154 5089 -550091.813682
+155 5090 -20316265.908800
+156 5198 4262854087.300000
+157 5201 20316265.908800
+158 5202 488199576.171000
+159 5311 4262854087.300000
+160 5312 -20316265.908800
+161 5315 488199576.171000
+162 5424 583761.425065
+163 5427 -17216557.310800
+164 5428 -33669.611383
+165 5431 3099708.597970
+166 5537 583761.425065
+167 5538 17216557.310800
+168 5541 -33669.611383
+169 5542 -3099708.597970
+170 5650 1393658877.880000
+171 5653 3099708.597970
+172 5654 189536372.902000
+173 5763 1393658877.880000
+174 5764 -3099708.597970
+175 5767 189536372.902000
+176 5876 38798237.669700
+177 5879 255072314.670000
+178 5880 -38764568.058300
+179 5883 258172023.268000
+180 5989 38798237.669700
+181 5990 -255072314.670000
+182 5993 -38764568.058300
+183 5994 -258172023.268000
+184 6102 3510285309.830000
+185 6105 258172023.268000
+186 6106 309763512.804000
+187 6215 3510285309.830000
+188 6216 -258172023.268000
+189 6219 309763512.804000
+190 6328 40183435.616300
+191 6331 -230234655.724000
+192 6332 -909567.558023
+193 6335 27937367.544700
+194 6441 40183435.616300
+195 6442 230234655.724000
+196 6445 -909567.558023
+197 6446 -27937367.544700
+198 6554 4292844182.190000
+199 6557 27937367.544700
+200 6558 552436143.207000
+201 6667 4292844182.190000
+202 6668 -27937367.544700
+203 6671 552436143.207000
+204 6780 3409726.069780
+205 6783 24565961.202200
+206 6784 -2500158.511760
+207 6787 52503328.746900
+208 6893 3409726.069780
+209 6894 -24565961.202200
+210 6897 -2500158.511760
+211 6898 -52503328.746900
+212 7006 2686440534.460000
+213 7009 52503328.746900
+214 7010 682455617.971000
+215 7119 2686440534.460000
+216 7120 -52503328.746900
+217 7123 682455617.971000
+218 7232 8801000.250060
+219 7235 42009297.327600
+220 7236 -6300841.738300
+221 7239 94512626.074500
+222 7345 8801000.250060
+223 7346 -42009297.327600
+224 7349 -6300841.738300
+225 7350 -94512626.074500
+226 7458 3547183580.520000
+227 7461 94512626.074500
+228 7462 810879391.117000
+229 7571 3547183580.520000
+230 7572 -94512626.074500
+231 7575 810879391.117000
+232 7684 12601683.476600
+233 7688 -6300841.738300
+234 7691 94512626.074500
+235 7797 12601683.476600
+236 7801 -6300841.738300
+237 7802 -94512626.074500
+238 7910 4048998782.230000
+239 7913 94512626.074500
+240 7914 810879391.117000
+241 8023 4048998782.230000
+242 8024 -94512626.074500
+243 8027 810879391.117000
+244 8136 28373429.047200
+245 8139 170358421.633000
+246 8140 -22072587.308900
+247 8143 264871047.707000
+248 8249 28373429.047200
+249 8250 -170358421.633000
+250 8253 -22072587.308900
+251 8254 -264871047.707000
+252 8362 6930451963.610000
+253 8365 264871047.707000
+254 8366 1450952572.490000
+255 8475 6930451963.610000
+256 8476 -264871047.707000
+257 8479 1450952572.490000
+258 8588 23543789.287000
+259 8591 -235520568.245000
+260 8592 -1471201.978070
+261 8595 29350479.462500
+262 8701 23543789.287000
+263 8702 235520568.245000
+264 8705 -1471201.978070
+265 8706 -29350479.462500
+266 8814 5710148773.100000
+267 8817 29350479.462500
+268 8818 366887929.939000
+269 8927 5710148773.100000
+270 8928 -29350479.462500
+271 8931 366887929.939000
+272 9040 9441904.989230
+273 9043 -27046371.989800
+274 9044 -30703.011163
+275 9047 2304107.472760
+276 9153 29001904.989200
+277 9154 27046371.989800
+278 9157 -30703.011163
+279 9158 -2304107.472760
+280 9266 1035235069.630000
+281 9269 2304107.472760
+282 9270 114784621.567000
+283 9379 1035235069.630000
+284 9380 -2304107.472760
+285 9383 114784621.567000
+286 9492 112445.943643
+287 9495 2110419.595800
+288 9496 -81742.932480
+289 9499 4414527.068560
+290 9605 112445.943643
+291 9606 -2110419.595800
+292 9609 -81742.932480
+293 9610 -4414527.068560
+294 9718 550218479.924000
+295 9721 4414527.068560
+296 9722 157633457.771000
+297 9831 550218479.924000
+298 9832 -4414527.068560
+299 9835 157633457.771000
+300 9944 7356558.795250
+301 9947 74699095.439000
+302 9948 -7274815.862770
+303 9951 79113622.507600
+304 10057 7356558.795250
+305 10058 -74699095.439000
+306 10061 -7274815.862770
+307 10062 -79113622.507600
+308 10170 1603747152.230000
+309 10173 79113622.507600
+310 10174 436153748.219000
+311 10283 1603747152.230000
+312 10284 -79113622.507600
+313 10287 436153748.219000
+314 10396 34924194.796500
+315 10399 77105368.468100
+316 10400 -27649378.933800
+317 10403 156218990.976000
+318 10509 34924194.796500
+319 10510 -77105368.468100
+320 10513 -27649378.933800
+321 10514 -156218990.976000
+322 10622 2983709265.110000
+323 10625 156218990.976000
+324 10626 66132874.234100
+325 10735 2983709265.110000
+326 10736 -156218990.976000
+327 10739 66132874.234100
+328 10848 48551840.707500
+329 10851 -53359540.822500
+330 10852 -11655461.773700
+331 10855 102859450.153000
+332 10961 52768840.707500
+333 10962 53359540.822500
+334 10965 -11655461.773700
+335 10966 -102859450.153000
+336 11074 3129624246.750000
+337 11077 102859450.153000
+338 11078 384986772.249000
+339 11187 3129624246.750000
+340 11188 -102859450.153000
+341 11191 384986772.249000
+342 11300 22825330.217200
+343 11303 -2330634.162380
+344 11304 -11169868.443400
+345 11307 100528815.991000
+346 11413 22825330.217200
+347 11414 2330634.162380
+348 11417 -11169868.443400
+349 11418 -100528815.991000
+350 11526 2847825200.210000
+351 11529 100528815.991000
+352 11530 392176010.585000
+353 11639 2847825200.210000
+354 11640 -100528815.991000
+355 11643 392176010.585000
+356 11752 80076045.100400
+357 11755 102312384.643000
+358 11756 -59659176.657000
+359 11759 202841200.634000
+360 11865 84293045.100400
+361 11866 -102312384.643000
+362 11869 -59659176.657000
+363 11870 -202841200.634000
+364 11978 3463840994.700000
+365 11981 202841200.634000
+366 11982 -667178153.140000
+367 12091 3463840994.700000
+368 12092 -202841200.634000
+369 12095 -667178153.140000
+370 12204 59659176.657000
+371 12207 -202841200.634000
+372 12317 59659176.657000
+373 12318 202841200.634000
+374 12430 2046498317.450000
+375 12543 2046498317.450000
+376 336 4507339372.820000
+377 448 -296965303.256000
+378 784 4507339372.820000
+379 225 -4507339372.820000
+380 561 -296965303.256000
+381 673 -4507339372.820000
+382 562 4507339372.820000
+383 674 -30414852966.400002
+384 451 -4507339372.820000
+385 787 -30414852966.400002
+386 788 -4138133736.490000
+387 900 -96272656.149300
+388 1236 369205636.333000
+389 677 4138133736.490000
+390 1013 -96272656.149300
+391 1125 -369205636.333000
+392 1014 369205636.333000
+393 1126 -1186547492.880000
+394 903 -369205636.333000
+395 1239 -1186547492.880000
+396 1240 42562563.091900
+397 1352 -100431268.152000
+398 1688 411768199.424000
+399 1129 -42562563.091900
+400 1465 -100431268.152000
+401 1577 -411768199.424000
+402 1466 411768199.424000
+403 1578 -1089530870.170000
+404 1355 -411768199.424000
+405 1691 -1089530870.170000
+406 1804 -100431268.152000
+407 2140 411768199.424000
+408 1917 -100431268.152000
+409 2029 -411768199.424000
+410 1918 411768199.424000
+411 2030 -1089530870.170000
+412 1807 -411768199.424000
+413 2143 -1089530870.170000
+414 2256 -100431268.152000
+415 2592 411768199.424000
+416 2369 -100431268.152000
+417 2481 -411768199.424000
+418 2370 411768199.424000
+419 2482 -1089530870.170000
+420 2259 -411768199.424000
+421 2595 -1089530870.170000
+422 2708 -100431268.152000
+423 3044 411768199.424000
+424 2821 -100431268.152000
+425 2933 -411768199.424000
+426 2822 411768199.424000
+427 2934 -1089530870.170000
+428 2711 -411768199.424000
+429 3047 -1089530870.170000
+430 3048 0.000005
+431 3160 -100431268.152000
+432 3496 411768199.424000
+433 2937 -0.000005
+434 3273 -100431268.152000
+435 3385 -411768199.424000
+436 3274 411768199.424000
+437 3386 -1089530870.170000
+438 3163 -411768199.424000
+439 3499 -1089530870.170000
+440 3500 -220955086.724000
+441 3612 -17958881.195400
+442 3948 190813112.701000
+443 3389 220955086.724000
+444 3725 -17958881.195400
+445 3837 -190813112.701000
+446 3726 190813112.701000
+447 3838 955492851.856000
+448 3615 -190813112.701000
+449 3951 955492851.856000
+450 3952 229121326.651000
+451 4064 -189501100.790000
+452 4400 419934439.351000
+453 3841 -229121326.651000
+454 4177 -189501100.790000
+455 4289 -419934439.351000
+456 4178 419934439.351000
+457 4290 -3573215896.120000
+458 4067 -419934439.351000
+459 4403 -3573215896.120000
+460 4404 -405856110.066000
+461 4516 -330283.384982
+462 4852 14078329.284900
+463 4293 405856110.066000
+464 4629 -330283.384982
+465 4741 -14078329.284900
+466 4630 14078329.284900
+467 4742 393111659.667000
+468 4519 -14078329.284900
+469 4855 393111659.667000
+470 4856 257197086.659000
+471 4968 -42107165.843000
+472 5304 271275415.944000
+473 4745 -257197086.659000
+474 5081 -42107165.843000
+475 5193 -271275415.944000
+476 5082 271275415.944000
+477 5194 244991052.316000
+478 4971 -271275415.944000
+479 5307 244991052.316000
+480 5308 -250959150.035000
+481 5420 -550091.813682
+482 5756 20316265.908800
+483 5197 250959150.035000
+484 5533 -550091.813682
+485 5645 -20316265.908800
+486 5534 20316265.908800
+487 5646 488199576.171000
+488 5423 -20316265.908800
+489 5759 488199576.171000
+490 5760 -17216557.310800
+491 5872 -33669.611383
+492 6208 3099708.597970
+493 5649 17216557.310800
+494 5985 -33669.611383
+495 6097 -3099708.597970
+496 5986 3099708.597970
+497 6098 189536372.902000
+498 5875 -3099708.597970
+499 6211 189536372.902000
+500 6212 255072314.670000
+501 6324 -38764568.058300
+502 6660 258172023.268000
+503 6101 -255072314.670000
+504 6437 -38764568.058300
+505 6549 -258172023.268000
+506 6438 258172023.268000
+507 6550 309763512.804000
+508 6327 -258172023.268000
+509 6663 309763512.804000
+510 6664 -230234655.724000
+511 6776 -909567.558023
+512 7112 27937367.544700
+513 6553 230234655.724000
+514 6889 -909567.558023
+515 7001 -27937367.544700
+516 6890 27937367.544700
+517 7002 552436143.207000
+518 6779 -27937367.544700
+519 7115 552436143.207000
+520 7116 24565961.202200
+521 7228 -2500158.511760
+522 7564 52503328.746900
+523 7005 -24565961.202200
+524 7341 -2500158.511760
+525 7453 -52503328.746900
+526 7342 52503328.746900
+527 7454 682455617.971000
+528 7231 -52503328.746900
+529 7567 682455617.971000
+530 7568 42009297.327600
+531 7680 -6300841.738300
+532 8016 94512626.074500
+533 7457 -42009297.327600
+534 7793 -6300841.738300
+535 7905 -94512626.074500
+536 7794 94512626.074500
+537 7906 810879391.117000
+538 7683 -94512626.074500
+539 8019 810879391.117000
+540 8132 -6300841.738300
+541 8468 94512626.074500
+542 8245 -6300841.738300
+543 8357 -94512626.074500
+544 8246 94512626.074500
+545 8358 810879391.117000
+546 8135 -94512626.074500
+547 8471 810879391.117000
+548 8472 170358421.633000
+549 8584 -22072587.308900
+550 8920 264871047.707000
+551 8361 -170358421.633000
+552 8697 -22072587.308900
+553 8809 -264871047.707000
+554 8698 264871047.707000
+555 8810 1450952572.490000
+556 8587 -264871047.707000
+557 8923 1450952572.490000
+558 8924 -235520568.245000
+559 9036 -1471201.978070
+560 9372 29350479.462500
+561 8813 235520568.245000
+562 9149 -1471201.978070
+563 9261 -29350479.462500
+564 9150 29350479.462500
+565 9262 366887929.939000
+566 9039 -29350479.462500
+567 9375 366887929.939000
+568 9376 -27046371.989800
+569 9488 -30703.011163
+570 9824 2304107.472760
+571 9265 27046371.989800
+572 9601 -30703.011163
+573 9713 -2304107.472760
+574 9602 2304107.472760
+575 9714 114784621.567000
+576 9491 -2304107.472760
+577 9827 114784621.567000
+578 9828 2110419.595800
+579 9940 -81742.932480
+580 10276 4414527.068560
+581 9717 -2110419.595800
+582 10053 -81742.932480
+583 10165 -4414527.068560
+584 10054 4414527.068560
+585 10166 157633457.771000
+586 9943 -4414527.068560
+587 10279 157633457.771000
+588 10280 74699095.439000
+589 10392 -7274815.862770
+590 10728 79113622.507600
+591 10169 -74699095.439000
+592 10505 -7274815.862770
+593 10617 -79113622.507600
+594 10506 79113622.507600
+595 10618 436153748.219000
+596 10395 -79113622.507600
+597 10731 436153748.219000
+598 10732 77105368.468100
+599 10844 -27649378.933800
+600 11180 156218990.976000
+601 10621 -77105368.468100
+602 10957 -27649378.933800
+603 11069 -156218990.976000
+604 10958 156218990.976000
+605 11070 66132874.234100
+606 10847 -156218990.976000
+607 11183 66132874.234100
+608 11184 -53359540.822500
+609 11296 -11655461.773700
+610 11632 102859450.153000
+611 11073 53359540.822500
+612 11409 -11655461.773700
+613 11521 -102859450.153000
+614 11410 102859450.153000
+615 11522 384986772.249000
+616 11299 -102859450.153000
+617 11635 384986772.249000
+618 11636 -2330634.162380
+619 11748 -11169868.443400
+620 12084 100528815.991000
+621 11525 2330634.162380
+622 11861 -11169868.443400
+623 11973 -100528815.991000
+624 11862 100528815.991000
+625 11974 392176010.585000
+626 11751 -100528815.991000
+627 12087 392176010.585000
+628 12088 102312384.643000
+629 12200 -59659176.657000
+630 12536 202841200.634000
+631 11977 -102312384.643000
+632 12313 -59659176.657000
+633 12425 -202841200.634000
+634 12314 202841200.634000
+635 12426 -667178153.140000
+636 12203 -202841200.634000
+637 12539 -667178153.140000
+638 12540 -202841200.634000
+639 12429 202841200.634000
+------------------------------
+Matrix: CSR sorted
+0 -1220441801 0.000000
+1 0 296965120.000748
+2 3 4507339372.820000
+3 4 -296965303.256000
+4 7 4507339372.820000
+5 113 296965303.256000
+6 114 -4507339372.820000
+7 117 -296965303.256000
+8 118 -4507339372.820000
+9 225 -4507339372.820000
+10 226 167239646968.000000
+11 229 4507339372.820000
+12 230 -30414852966.400002
+13 336 4507339372.820000
+14 339 167239646968.000000
+15 340 -4507339372.820000
+16 343 -30414852966.400002
+17 448 -296965303.256000
+18 451 -4507339372.820000
+19 452 393237959.405000
+20 455 -4138133736.490000
+21 456 -96272656.149300
+22 459 369205636.333000
+23 561 -296965303.256000
+24 562 4507339372.820000
+25 565 393237959.405000
+26 566 4138133736.490000
+27 569 -96272656.149300
+28 570 -369205636.333000
+29 673 -4507339372.820000
+30 674 -30414852966.400002
+31 677 4138133736.490000
+32 678 171258001691.000000
+33 681 369205636.333000
+34 682 -1186547492.880000
+35 784 4507339372.820000
+36 787 -30414852966.400002
+37 788 -4138133736.490000
+38 791 171258001691.000000
+39 792 -369205636.333000
+40 795 -1186547492.880000
+41 900 -96272656.149300
+42 903 -369205636.333000
+43 904 196873924.302000
+44 907 42562563.091900
+45 908 -100431268.152000
+46 911 411768199.424000
+47 1013 -96272656.149300
+48 1014 369205636.333000
+49 1017 196873924.302000
+50 1018 -42562563.091900
+51 1021 -100431268.152000
+52 1022 -411768199.424000
+53 1125 -369205636.333000
+54 1126 -1186547492.880000
+55 1129 -42562563.091900
+56 1130 8484384828.990000
+57 1133 411768199.424000
+58 1134 -1089530870.170000
+59 1236 369205636.333000
+60 1239 -1186547492.880000
+61 1240 42562563.091900
+62 1243 8484384828.990000
+63 1244 -411768199.424000
+64 1247 -1089530870.170000
+65 1352 -100431268.152000
+66 1355 -411768199.424000
+67 1356 201032536.305000
+68 1360 -100431268.152000
+69 1363 411768199.424000
+70 1465 -100431268.152000
+71 1466 411768199.424000
+72 1469 201032536.305000
+73 1473 -100431268.152000
+74 1474 -411768199.424000
+75 1577 -411768199.424000
+76 1578 -1089530870.170000
+77 1582 8932060210.889999
+78 1585 411768199.424000
+79 1586 -1089530870.170000
+80 1688 411768199.424000
+81 1691 -1089530870.170000
+82 1695 8932060210.889999
+83 1696 -411768199.424000
+84 1699 -1089530870.170000
+85 1804 -100431268.152000
+86 1807 -411768199.424000
+87 1808 201032536.305000
+88 1812 -100431268.152000
+89 1815 411768199.424000
+90 1917 -100431268.152000
+91 1918 411768199.424000
+92 1921 201032536.305000
+93 1925 -100431268.152000
+94 1926 -411768199.424000
+95 2029 -411768199.424000
+96 2030 -1089530870.170000
+97 2034 8932060210.889999
+98 2037 411768199.424000
+99 2038 -1089530870.170000
+100 2140 411768199.424000
+101 2143 -1089530870.170000
+102 2147 8932060210.889999
+103 2148 -411768199.424000
+104 2151 -1089530870.170000
+105 2256 -100431268.152000
+106 2259 -411768199.424000
+107 2260 201032536.305000
+108 2264 -100431268.152000
+109 2267 411768199.424000
+110 2369 -100431268.152000
+111 2370 411768199.424000
+112 2373 201032536.305000
+113 2377 -100431268.152000
+114 2378 -411768199.424000
+115 2481 -411768199.424000
+116 2482 -1089530870.170000
+117 2486 8932060210.889999
+118 2489 411768199.424000
+119 2490 -1089530870.170000
+120 2592 411768199.424000
+121 2595 -1089530870.170000
+122 2599 8932060210.889999
+123 2600 -411768199.424000
+124 2603 -1089530870.170000
+125 2708 -100431268.152000
+126 2711 -411768199.424000
+127 2712 201032536.305000
+128 2715 0.000005
+129 2716 -100431268.152000
+130 2719 411768199.424000
+131 2821 -100431268.152000
+132 2822 411768199.424000
+133 2825 201032536.305000
+134 2826 -0.000005
+135 2829 -100431268.152000
+136 2830 -411768199.424000
+137 2933 -411768199.424000
+138 2934 -1089530870.170000
+139 2937 -0.000005
+140 2938 8932060210.889999
+141 2941 411768199.424000
+142 2942 -1089530870.170000
+143 3044 411768199.424000
+144 3047 -1089530870.170000
+145 3048 0.000005
+146 3051 8932060210.889999
+147 3052 -411768199.424000
+148 3055 -1089530870.170000
+149 3160 -100431268.152000
+150 3163 -411768199.424000
+151 3164 118560149.348000
+152 3167 -220955086.724000
+153 3168 -17958881.195400
+154 3171 190813112.701000
+155 3273 -100431268.152000
+156 3274 411768199.424000
+157 3277 118560149.348000
+158 3278 220955086.724000
+159 3281 -17958881.195400
+160 3282 -190813112.701000
+161 3385 -411768199.424000
+162 3386 -1089530870.170000
+163 3389 220955086.724000
+164 3390 7565315898.480000
+165 3393 190813112.701000
+166 3394 955492851.856000
+167 3496 411768199.424000
+168 3499 -1089530870.170000
+169 3500 -220955086.724000
+170 3503 7565315898.480000
+171 3504 -190813112.701000
+172 3507 955492851.856000
+173 3612 -17958881.195400
+174 3615 -190813112.701000
+175 3616 207459981.986000
+176 3619 229121326.651000
+177 3620 -189501100.790000
+178 3623 419934439.351000
+179 3725 -17958881.195400
+180 3726 190813112.701000
+181 3729 207459981.986000
+182 3730 -229121326.651000
+183 3733 -189501100.790000
+184 3734 -419934439.351000
+185 3837 -190813112.701000
+186 3838 955492851.856000
+187 3841 -229121326.651000
+188 3842 8533651124.350000
+189 3845 419934439.351000
+190 3846 -3573215896.120000
+191 3948 190813112.701000
+192 3951 955492851.856000
+193 3952 229121326.651000
+194 3955 8533651124.350000
+195 3956 -419934439.351000
+196 3959 -3573215896.120000
+197 4064 -189501100.790000
+198 4067 -419934439.351000
+199 4068 189831384.175000
+200 4071 -405856110.066000
+201 4072 -330283.384982
+202 4075 14078329.284900
+203 4177 -189501100.790000
+204 4178 419934439.351000
+205 4181 189831384.175000
+206 4182 405856110.066000
+207 4185 -330283.384982
+208 4186 -14078329.284900
+209 4289 -419934439.351000
+210 4290 -3573215896.120000
+211 4293 405856110.066000
+212 4294 6241431243.190000
+213 4297 14078329.284900
+214 4298 393111659.667000
+215 4400 419934439.351000
+216 4403 -3573215896.120000
+217 4404 -405856110.066000
+218 4407 6241431243.190000
+219 4408 -14078329.284900
+220 4411 393111659.667000
+221 4516 -330283.384982
+222 4519 -14078329.284900
+223 4520 42437449.228000
+224 4523 257197086.659000
+225 4524 -42107165.843000
+226 4527 271275415.944000
+227 4629 -330283.384982
+228 4630 14078329.284900
+229 4633 42437449.228000
+230 4634 -257197086.659000
+231 4637 -42107165.843000
+232 4638 -271275415.944000
+233 4741 -14078329.284900
+234 4742 393111659.667000
+235 4745 -257197086.659000
+236 4746 4057458593.980000
+237 4749 271275415.944000
+238 4750 244991052.316000
+239 4852 14078329.284900
+240 4855 393111659.667000
+241 4856 257197086.659000
+242 4859 4057458593.980000
+243 4860 -271275415.944000
+244 4863 244991052.316000
+245 4968 -42107165.843000
+246 4971 -271275415.944000
+247 4972 43166557.656700
+248 4975 -250959150.035000
+249 4976 -550091.813682
+250 4979 20316265.908800
+251 5081 -42107165.843000
+252 5082 271275415.944000
+253 5085 43166557.656700
+254 5086 250959150.035000
+255 5089 -550091.813682
+256 5090 -20316265.908800
+257 5193 -271275415.944000
+258 5194 244991052.316000
+259 5197 250959150.035000
+260 5198 4262854087.300000
+261 5201 20316265.908800
+262 5202 488199576.171000
+263 5304 271275415.944000
+264 5307 244991052.316000
+265 5308 -250959150.035000
+266 5311 4262854087.300000
+267 5312 -20316265.908800
+268 5315 488199576.171000
+269 5420 -550091.813682
+270 5423 -20316265.908800
+271 5424 583761.425065
+272 5427 -17216557.310800
+273 5428 -33669.611383
+274 5431 3099708.597970
+275 5533 -550091.813682
+276 5534 20316265.908800
+277 5537 583761.425065
+278 5538 17216557.310800
+279 5541 -33669.611383
+280 5542 -3099708.597970
+281 5645 -20316265.908800
+282 5646 488199576.171000
+283 5649 17216557.310800
+284 5650 1393658877.880000
+285 5653 3099708.597970
+286 5654 189536372.902000
+287 5756 20316265.908800
+288 5759 488199576.171000
+289 5760 -17216557.310800
+290 5763 1393658877.880000
+291 5764 -3099708.597970
+292 5767 189536372.902000
+293 5872 -33669.611383
+294 5875 -3099708.597970
+295 5876 38798237.669700
+296 5879 255072314.670000
+297 5880 -38764568.058300
+298 5883 258172023.268000
+299 5985 -33669.611383
+300 5986 3099708.597970
+301 5989 38798237.669700
+302 5990 -255072314.670000
+303 5993 -38764568.058300
+304 5994 -258172023.268000
+305 6097 -3099708.597970
+306 6098 189536372.902000
+307 6101 -255072314.670000
+308 6102 3510285309.830000
+309 6105 258172023.268000
+310 6106 309763512.804000
+311 6208 3099708.597970
+312 6211 189536372.902000
+313 6212 255072314.670000
+314 6215 3510285309.830000
+315 6216 -258172023.268000
+316 6219 309763512.804000
+317 6324 -38764568.058300
+318 6327 -258172023.268000
+319 6328 40183435.616300
+320 6331 -230234655.724000
+321 6332 -909567.558023
+322 6335 27937367.544700
+323 6437 -38764568.058300
+324 6438 258172023.268000
+325 6441 40183435.616300
+326 6442 230234655.724000
+327 6445 -909567.558023
+328 6446 -27937367.544700
+329 6549 -258172023.268000
+330 6550 309763512.804000
+331 6553 230234655.724000
+332 6554 4292844182.190000
+333 6557 27937367.544700
+334 6558 552436143.207000
+335 6660 258172023.268000
+336 6663 309763512.804000
+337 6664 -230234655.724000
+338 6667 4292844182.190000
+339 6668 -27937367.544700
+340 6671 552436143.207000
+341 6776 -909567.558023
+342 6779 -27937367.544700
+343 6780 3409726.069780
+344 6783 24565961.202200
+345 6784 -2500158.511760
+346 6787 52503328.746900
+347 6889 -909567.558023
+348 6890 27937367.544700
+349 6893 3409726.069780
+350 6894 -24565961.202200
+351 6897 -2500158.511760
+352 6898 -52503328.746900
+353 7001 -27937367.544700
+354 7002 552436143.207000
+355 7005 -24565961.202200
+356 7006 2686440534.460000
+357 7009 52503328.746900
+358 7010 682455617.971000
+359 7112 27937367.544700
+360 7115 552436143.207000
+361 7116 24565961.202200
+362 7119 2686440534.460000
+363 7120 -52503328.746900
+364 7123 682455617.971000
+365 7228 -2500158.511760
+366 7231 -52503328.746900
+367 7232 8801000.250060
+368 7235 42009297.327600
+369 7236 -6300841.738300
+370 7239 94512626.074500
+371 7341 -2500158.511760
+372 7342 52503328.746900
+373 7345 8801000.250060
+374 7346 -42009297.327600
+375 7349 -6300841.738300
+376 7350 -94512626.074500
+377 7453 -52503328.746900
+378 7454 682455617.971000
+379 7457 -42009297.327600
+380 7458 3547183580.520000
+381 7461 94512626.074500
+382 7462 810879391.117000
+383 7564 52503328.746900
+384 7567 682455617.971000
+385 7568 42009297.327600
+386 7571 3547183580.520000
+387 7572 -94512626.074500
+388 7575 810879391.117000
+389 7680 -6300841.738300
+390 7683 -94512626.074500
+391 7684 12601683.476600
+392 7688 -6300841.738300
+393 7691 94512626.074500
+394 7793 -6300841.738300
+395 7794 94512626.074500
+396 7797 12601683.476600
+397 7801 -6300841.738300
+398 7802 -94512626.074500
+399 7905 -94512626.074500
+400 7906 810879391.117000
+401 7910 4048998782.230000
+402 7913 94512626.074500
+403 7914 810879391.117000
+404 8016 94512626.074500
+405 8019 810879391.117000
+406 8023 4048998782.230000
+407 8024 -94512626.074500
+408 8027 810879391.117000
+409 8132 -6300841.738300
+410 8135 -94512626.074500
+411 8136 28373429.047200
+412 8139 170358421.633000
+413 8140 -22072587.308900
+414 8143 264871047.707000
+415 8245 -6300841.738300
+416 8246 94512626.074500
+417 8249 28373429.047200
+418 8250 -170358421.633000
+419 8253 -22072587.308900
+420 8254 -264871047.707000
+421 8357 -94512626.074500
+422 8358 810879391.117000
+423 8361 -170358421.633000
+424 8362 6930451963.610000
+425 8365 264871047.707000
+426 8366 1450952572.490000
+427 8468 94512626.074500
+428 8471 810879391.117000
+429 8472 170358421.633000
+430 8475 6930451963.610000
+431 8476 -264871047.707000
+432 8479 1450952572.490000
+433 8584 -22072587.308900
+434 8587 -264871047.707000
+435 8588 23543789.287000
+436 8591 -235520568.245000
+437 8592 -1471201.978070
+438 8595 29350479.462500
+439 8697 -22072587.308900
+440 8698 264871047.707000
+441 8701 23543789.287000
+442 8702 235520568.245000
+443 8705 -1471201.978070
+444 8706 -29350479.462500
+445 8809 -264871047.707000
+446 8810 1450952572.490000
+447 8813 235520568.245000
+448 8814 5710148773.100000
+449 8817 29350479.462500
+450 8818 366887929.939000
+451 8920 264871047.707000
+452 8923 1450952572.490000
+453 8924 -235520568.245000
+454 8927 5710148773.100000
+455 8928 -29350479.462500
+456 8931 366887929.939000
+457 9036 -1471201.978070
+458 9039 -29350479.462500
+459 9040 9441904.989230
+460 9043 -27046371.989800
+461 9044 -30703.011163
+462 9047 2304107.472760
+463 9149 -1471201.978070
+464 9150 29350479.462500
+465 9153 29001904.989200
+466 9154 27046371.989800
+467 9157 -30703.011163
+468 9158 -2304107.472760
+469 9261 -29350479.462500
+470 9262 366887929.939000
+471 9265 27046371.989800
+472 9266 1035235069.630000
+473 9269 2304107.472760
+474 9270 114784621.567000
+475 9372 29350479.462500
+476 9375 366887929.939000
+477 9376 -27046371.989800
+478 9379 1035235069.630000
+479 9380 -2304107.472760
+480 9383 114784621.567000
+481 9488 -30703.011163
+482 9491 -2304107.472760
+483 9492 112445.943643
+484 9495 2110419.595800
+485 9496 -81742.932480
+486 9499 4414527.068560
+487 9601 -30703.011163
+488 9602 2304107.472760
+489 9605 112445.943643
+490 9606 -2110419.595800
+491 9609 -81742.932480
+492 9610 -4414527.068560
+493 9713 -2304107.472760
+494 9714 114784621.567000
+495 9717 -2110419.595800
+496 9718 550218479.924000
+497 9721 4414527.068560
+498 9722 157633457.771000
+499 9824 2304107.472760
+500 9827 114784621.567000
+501 9828 2110419.595800
+502 9831 550218479.924000
+503 9832 -4414527.068560
+504 9835 157633457.771000
+505 9940 -81742.932480
+506 9943 -4414527.068560
+507 9944 7356558.795250
+508 9947 74699095.439000
+509 9948 -7274815.862770
+510 9951 79113622.507600
+511 10053 -81742.932480
+512 10054 4414527.068560
+513 10057 7356558.795250
+514 10058 -74699095.439000
+515 10061 -7274815.862770
+516 10062 -79113622.507600
+517 10165 -4414527.068560
+518 10166 157633457.771000
+519 10169 -74699095.439000
+520 10170 1603747152.230000
+521 10173 79113622.507600
+522 10174 436153748.219000
+523 10276 4414527.068560
+524 10279 157633457.771000
+525 10280 74699095.439000
+526 10283 1603747152.230000
+527 10284 -79113622.507600
+528 10287 436153748.219000
+529 10392 -7274815.862770
+530 10395 -79113622.507600
+531 10396 34924194.796500
+532 10399 77105368.468100
+533 10400 -27649378.933800
+534 10403 156218990.976000
+535 10505 -7274815.862770
+536 10506 79113622.507600
+537 10509 34924194.796500
+538 10510 -77105368.468100
+539 10513 -27649378.933800
+540 10514 -156218990.976000
+541 10617 -79113622.507600
+542 10618 436153748.219000
+543 10621 -77105368.468100
+544 10622 2983709265.110000
+545 10625 156218990.976000
+546 10626 66132874.234100
+547 10728 79113622.507600
+548 10731 

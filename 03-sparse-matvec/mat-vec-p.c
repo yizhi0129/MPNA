@@ -7,6 +7,12 @@
 #define MatrixFile1 "./data/bcsstk03/bcsstk03.mtx"
 #define MatrixFile2 "./data/cfd1/cfd1.mtx"
 
+#define VectorFile1 "./vector1.txt"
+#define VectorFile2 "./vector2.txt"
+
+#define ResultFile1 "./parallel_result1.txt"
+#define ResultFile2 "./parallel_result2.txt"
+
 // timer
 double get_time()
 {
@@ -52,9 +58,9 @@ int main(int argc, char** argv)
         return 1;
     }   
 
-    int n1, nnz1, n2, nnz2;
-    int *index1 = NULL, *col_id1 = NULL, *index2 = NULL, *col_id2 = NULL;
-    double *val1 = NULL, *val2 = NULL, *x1 = NULL, *y1 = NULL, *x2 = NULL, *y2 = NULL;
+    int n = 0, nnz = 0;
+    int *index = NULL, *col_id = NULL;
+    double *val = NULL, *x = NULL, *y = NULL;
 
     int n_para = atoi(argv[1]);
 
@@ -66,127 +72,76 @@ int main(int argc, char** argv)
     // read the data
     if (rank == 0)
     {
-        read_size(MatrixFile1, &n1, &nnz1);
-        read_size(MatrixFile2, &n2, &nnz2);
+        read_size(MatrixFile1, &n, &nnz);
         
-        nnz1 = nnz1 * 2 - n1;
-        nnz2 = nnz2 * 2 - n2;
+        nnz = nnz * 2 - n;
     
-        x1 = (double *) malloc(n1 * sizeof(double));
-        y1 = (double *) malloc(n1 * sizeof(double));
-        col_id1 = (int *) malloc(nnz1 * sizeof(int));
-        index1 = (int *) malloc((n1 + 1) * sizeof(int));
-        val1 = (double *) malloc(nnz1 * sizeof(double));    
-
-        x2 = (double *) malloc(n2 * sizeof(double));
-        y2 = (double *) malloc(n2 * sizeof(double));
-        col_id2 = (int *) malloc(nnz2 * sizeof(int));
-        index2 = (int *) malloc((n2 + 1) * sizeof(int));
-        val2 = (double *) malloc(nnz2 * sizeof(double));
+        x = (double *) malloc(n * sizeof(double));
+        y = (double *) malloc(n * sizeof(double));
+        col_id = (int *) malloc(nnz * sizeof(int));
+        index = (int *) malloc((n + 1) * sizeof(int));
+        val = (double *) malloc(nnz * sizeof(double));    
    
-        read_matrix(MatrixFile1, n1, nnz1, index1, col_id1, val1);
-        read_matrix(MatrixFile2, n2, nnz2, index2, col_id2, val2);
+        read_matrix(MatrixFile1, n, nnz, index, col_id, val);
 
-        gen_vector("vector1.txt", n1, x1);
-        gen_vector("vector2.txt", n2, x2);
+        read_vector(VectorFile1, n, x);
     }
 
     // distribute the data
-    MPI_Bcast(&n1, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
     if (rank != 0) 
     {
-        x1 = malloc(n1 * sizeof(double));
+        x = malloc(n * sizeof(double));
     }
-    MPI_Bcast(x1, n1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-
-    MPI_Bcast(&n2, 1, MPI_INT, 0, MPI_COMM_WORLD);
-    if (rank != 0) 
-    {
-        x2 = malloc(n2 * sizeof(double));
-    }
-    MPI_Bcast(x2, n2, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Bcast(x, n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     // local calculation
-    int n_local1 = local_size(n1, rank, n_para);
-    int begin1 = local_begin(n1, rank, n_para);
-    int n_local2 = local_size(n2, rank, n_para);
-    int begin2 = local_begin(n2, rank, n_para);
+    int n_local = local_size(n, rank, n_para);
+    int begin = local_begin(n, rank, n_para);
 
-    double *y_local1 = malloc(n_local1 * sizeof(double));
-    double *y_local2 = malloc(n_local2 * sizeof(double));
+    double *y_local = malloc(n_local * sizeof(double));
 
-    double global_start1 = get_time();
-    matvec_block(n_local1, begin1, index1 + begin1, col_id1, val1, x1, y_local1);
+    double global_start = get_time();
+    matvec_block(n_local, begin, index + begin, col_id, val, x, y_local);
     MPI_Barrier(MPI_COMM_WORLD);
-    double global_end1 = get_time();
-    
-    double global_start2 = get_time();
-    matvec_block(n_local2, begin2, index2 + begin2, col_id2, val2, x2, y_local2);
-    MPI_Barrier(MPI_COMM_WORLD);
-    double global_end2 = get_time();
+    double global_end = get_time();
 
     // collect the results and print in a txt file
-    int *recvcounts1 = NULL, *displs1 = NULL;
+    int *recvcounts = NULL, *displs = NULL;
     if (rank == 0) 
     {
-        recvcounts1 = malloc(n_para * sizeof(int));
-        displs1 = malloc(n_para * sizeof(int));
-        int offset1 = 0;
+        recvcounts = malloc(n_para * sizeof(int));
+        displs = malloc(n_para * sizeof(int));
+        int offset = 0;
         for (int i = 0; i < n_para; i++) 
         {
-            recvcounts1[i] = local_size(n1, i, n_para);
-            displs1[i] = offset1;
-            offset1 += recvcounts1[i];
+            recvcounts[i] = local_size(n, i, n_para);
+            displs[i] = offset;
+            offset += recvcounts[i];
         }
     }
-    MPI_Gatherv(y_local1, n_local1, MPI_DOUBLE, y1, recvcounts1, displs1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-
-    int *recvcounts2 = NULL, *displs2 = NULL;
-    if (rank == 0) 
-    {
-        recvcounts2 = malloc(n_para * sizeof(int));
-        displs2 = malloc(n_para * sizeof(int));
-        int offset2 = 0;
-        for (int i = 0; i < n_para; i ++) 
-        {
-            recvcounts2[i] = local_size(n2, i, n_para);
-            displs2[i] = offset2;
-            offset2 += recvcounts2[i];
-        }
-    }
-    MPI_Gatherv(y_local2, n_local2, MPI_DOUBLE, y2, recvcounts2, displs2, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Gatherv(y_local, n_local, MPI_DOUBLE, y, recvcounts, displs, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
     // local free
-    free(x1);
-    free(y_local1); 
-    free(x2); 
-    free(y_local2);
+    free(x);
+    free(y_local); 
 
     // print and global free
     if (rank == 0)
     {
         printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
         printf("---------------------------------------------------------\n");
-        printf("%.6f\t%d\t%d\t%d\n", global_end1 - global_start1, n_para, n1, nnz1);
-        printf("%.6f\t%d\t%d\t%d\n", global_end2 - global_start2, n_para, n2, nnz2);
-        write_vector("parallel_result1.txt", n1, y1);
-        write_vector("parallel_result2.txt", n2, y2);
+        printf("%.6f\t%d\t%d\t%d\n", global_end - global_start, n_para, n, nnz);
+        write_vector(ResultFile1, n, y);
 
-        free(y1); 
-        free(col_id1); 
-        free(index1); 
-        free(val1);
+        free(y); 
+        free(col_id); 
+        free(index); 
+        free(val);
 
-        free(y2); 
-        free(col_id2); 
-        free(index2); 
-        free(val2);
+        free(recvcounts); 
+        free(displs); 
 
-        free(recvcounts1); 
-        free(displs1); 
-
-        free(recvcounts2); 
-        free(displs2);
     }
 
     MPI_Finalize();
