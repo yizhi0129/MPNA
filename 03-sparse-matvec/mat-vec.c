@@ -3,14 +3,14 @@
 
 #include "files.h"
 
-#define MatrixFile1 "./data/bcsstk03/bcsstk03.mtx"
-#define MatrixFile2 "./data/cfd1/cfd1.mtx"
+#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define MatrixFile "./data/cfd1/cfd1.mtx"
 
-#define VectorFile1 "./vector1.txt"
-#define VectorFile2 "./vector2.txt"
+#define VectorFile "./vector1.txt"
+//#define VectorFile "./vector2.txt"
 
-#define ResultFile1 "./serial_result1.txt"
-#define ResultFile2 "./serial_result2.txt"
+#define ResultFile "./serial_result1.txt"
+//#define ResultFile "./serial_result2.txt"
 
 // timer
 double get_time()
@@ -20,19 +20,6 @@ double get_time()
     return tv.tv_sec + tv.tv_usec / 1e6;
 }
 
-// y = A * x ( A in CSR format)
-void matvec(int n, int *index, int *col_id, double *val, double *x, double *y)
-{
-    for (int i = 0; i < n; i ++)
-    {
-        y[i] = 0;
-        for (int j = index[i]; j < index[i + 1]; j ++)
-        {
-            y[i] += val[col_id[j]] * x[j];
-        }
-    }
-}
-
 
 int main(int argc, char** argv)
 {
@@ -40,7 +27,7 @@ int main(int argc, char** argv)
     int *index = NULL, *col_id = NULL;
     double *val = NULL, *x = NULL, *y = NULL;
 
-    read_size(MatrixFile1, &n, &nnz);
+    read_size(MatrixFile, &n, &nnz);
     nnz = nnz * 2 - n;
     
     x = (double *) malloc(n * sizeof(double));
@@ -49,9 +36,9 @@ int main(int argc, char** argv)
     index = (int *) malloc((n + 1) * sizeof(int));
     val = (double *) malloc(nnz * sizeof(double));    
 
-    read_matrix(MatrixFile1, n, nnz, index, col_id, val);
+    read_matrix(MatrixFile, n, nnz, index, col_id, val);
 
-    gen_vector(VectorFile1, n, x);
+    gen_vector(VectorFile, n, x);
 
     double start = get_time();
     matvec(n, index, col_id, val, x, y);  
@@ -59,8 +46,8 @@ int main(int argc, char** argv)
 
     printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
     printf("---------------------------------------------------------\n");
-    printf("%.6f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
-    write_vector(ResultFile1, n, y);
+    printf("%.10f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
+    write_vector(ResultFile, n, y);
 
     free(x);
     free(y);

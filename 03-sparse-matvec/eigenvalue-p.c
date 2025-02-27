@@ -1,5 +1,6 @@
 #include <sys/time.h>
 #include <time.h>
+#include <mpi.h>
 
 #include "files.h"
 
@@ -9,11 +10,11 @@
 #define VectorFile "./vector1.txt"
 //#define VectorFile "./vector2.txt"
 
-#define IterFile "./serial_iter1.txt"
-//#define IterFile "./iserial_ter2.txt"
+#define IterFile "./iter1"
+//#define IterFile "./iter2"
 
-#define EigFile "./serial_eig1.txt"
-//#define EigFile "./serial_eig2.txt"
+#define EigFile "./eig1"
+//#define EigFile "./eig2"
 
 #define EPSILON 1e-6
 

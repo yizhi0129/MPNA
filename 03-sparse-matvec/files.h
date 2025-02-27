@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define MAX_SIZE 1024
 
@@ -10,7 +11,7 @@ void read_size(char *filename, int *n, int *nnz)
     FILE *fp = fopen(filename, "r");
     if (!fp)
     {
-        perror("Error opening file");
+        perror("Error opening file: read_size");
         exit(1);
     }
 
@@ -36,18 +37,22 @@ void read_size(char *filename, int *n, int *nnz)
 }
 
 
-// naive bubble sort
-void bubble_sort(int *id, double *value, int n) 
+// bubble_sort row, column
+void bubble_sort(int *row, int *col, double *value, int nnz) 
 {
-    for (int i = 0; i < n; i ++) 
+    for (int i = 0; i < nnz - 1; i++) 
     {
-        for (int j = 0; j < n - i; j ++) 
+        for (int j = 0; j < nnz - i - 1; j++) 
         {
-            if (id[j] > id[j + 1]) 
+            if ((row[j] > row[j + 1]) || (row[j] == row[j + 1] && col[j] > col[j + 1])) 
             {
-                int temp_id = id[j];
-                id[j] = id[j + 1];
-                id[j + 1] = temp_id;
+                int temp_r = row[j];
+                row[j] = row[j + 1];
+                row[j + 1] = temp_r;
+
+                int temp_c = col[j];
+                col[j] = col[j + 1];
+                col[j + 1] = temp_c;
 
                 double temp_val = value[j];
                 value[j] = value[j + 1];
@@ -62,11 +67,11 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
     FILE *fp = fopen(filename, "r");
     if (!fp)
     {
-        perror("Error opening file");
+        perror("Error opening file: read_matrix");
         exit(1);
     }
 
-    char line[MAX_SIZE];
+    char line[1024];
     int count = 0;
     int *row = malloc(nnz * sizeof(int));
     int *col = malloc(nnz * sizeof(int));
@@ -75,114 +80,92 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
     while (fgets(line, sizeof(line), fp))
     {
         int n_check = 0, nnz_check = 0;
-        if (line[0] == '%')
+        if (line[0] == '%') continue;
+
+        if (count == 0)
         {
-            continue;
-        }
-        else
-        {
-            if (count == 0)
+            sscanf(line, "%d %*d %d", &n_check, &nnz_check);
+            int nnz_check1 = nnz_check * 2 - n_check;
+            if (n_check != n || nnz_check1 != nnz)
             {
-                sscanf(line, "%d %*d %d", &n_check, &nnz_check);
-                int nnz_check1 = nnz_check * 2 - n_check;
-                if (n_check != n || nnz_check1 != nnz)
-                {
-                    fprintf(stderr, "Matrix size does not match\n");
-                    exit(1);
-                }
+                fprintf(stderr, "Matrix size does not match\n");
+                exit(1);
             }
-            count ++;
-            
-            int sym = nnz_check; 
-            for (int k = 0; k < nnz_check; k ++)
-            {
-                if (fgets(line, sizeof(line), fp) == NULL) 
-                {
-                    fprintf(stderr, "Fail to read line %d\n", k + 1);
-                    break;
-                }
-            
-                int temp_r = 0, temp_c = 0;
-                double temp_A = 0.0;
-                if (sscanf(line, "%d %d %lf", &temp_r, &temp_c, &temp_A) != 3) 
-                {
-                    fprintf(stderr, "Fail to load data line %d %s\n", k + 1, line);
-                    continue;
-                }
-
-                row[k] = temp_r - 1;
-                col[k] = temp_c - 1;
-                A[k] = temp_A;    
-                printf("Read: k = %d, row = %d, col = %d, A = %.lf\n", k, row[k], col[k], A[k]);
-    
-                if (temp_r != temp_c)
-                {
-                    row[sym] = temp_c - 1;
-                    col[sym] = temp_r - 1;
-                    A[sym] = temp_A;
-                    printf("Complete symmetry: k = %d, row = %d, col = %d, A = %.lf\n", sym, row[sym], col[sym], A[sym]);
-                    sym ++;
-                }
-            }           
         }
+        count++;
 
-        // convert to CSR format (not sorted)
-        printf("Matrix: CSR not sorted\n");
-        for (int i = 0; i < nnz; i ++) 
+        int sym = nnz_check;
+        for (int k = 0; k < nnz_check; k ++)
         {
-            col_id[i] = col[i] * n + row[i];
+            if (fgets(line, sizeof(line), fp) == NULL) 
+            {
+                fprintf(stderr, "Fail to read line %d\n", k + 1);
+                break;
+            }
+
+            int temp_r = 0, temp_c = 0;
+            double temp_A = 0.0;
+            if (sscanf(line, "%d %d %lf", &temp_r, &temp_c, &temp_A) != 3) 
+            {
+                fprintf(stderr, "Fail to load data line %d %s\n", k + 1, line);
+                continue;
+            }
+
+            row[k] = temp_r - 1;
+            col[k] = temp_c - 1;
+            A[k] = temp_A;    
+
+            if (temp_r != temp_c)
+            {
+                row[sym] = temp_c - 1;
+                col[sym] = temp_r - 1;
+                A[sym] = temp_A;
+                sym ++;
+            }
+        }           
+
+        // sort
+        bubble_sort(row, col, A, nnz);
+
+        // CSR
+        for (int i = 0; i < nnz; i++) 
+        {
+            col_id[i] = col[i] + n * row[i];
             val[i] = A[i];
-            printf("%d %d %lf\n", i, col_id[i], val[i]);
         }    
-        printf("------------------------------\n");
 
-        // sort the CSR format and complete index array
-        bubble_sort(col_id, val, nnz);
-        printf("Matrix: CSR sorted\n");
-        for (int i = 0; i < nnz; i ++)
-        {
-            printf("%d %d %lf\n", i, col_id[i], val[i]);
-        }
-        printf("------------------------------\n");
-
-        // complete the index array
-        int count_ind = 0;    
+        // complete index
         index[0] = 0;
-        printf("Index: ");
-        for (int k = 1; k < n; k ++)
+        int next_row_boundary = n;
+        int row_counter = 1;
+        for (int i = 0; i < nnz; i++)
         {
-            for (int i = 0; i < nnz; i ++)
+            while (col_id[i] >= next_row_boundary && row_counter < n)
             {
-                if (col_id[i] < n * k)
-                {
-                    count_ind ++;
-                }
-                else
-                {
-                    break;
-                }
-                
+                index[row_counter] = i;
+                row_counter ++;
+                next_row_boundary += n;
             }
-            index[k] = col_id[count_ind + 1];
-            printf("%d %d\n", k + 1, index[k]);
         }
-        index[n] = nnz;   
-        printf("------------------------------\n");
+        for (; row_counter <= n; row_counter ++)
+        {
+            index[row_counter] = nnz;
+        }
     }
-    
+
     free(A);
     free(row);
     free(col);
-
     fclose(fp);
 }
+
 
 void gen_vector(char *filename, int n, double *x)
 {
     FILE *fp = fopen(filename, "w");
     if (!fp)
     {
-        perror("Error opening file");
+        perror("Error opening file: gen_vector");
         exit(1);
     }
 
@@ -200,7 +183,7 @@ void read_vector(char *filename, int n, double *x)
     FILE *fp = fopen(filename, "r");
     if (!fp)
     {
-        perror("Error opening file");
+        perror("Error opening file: read_vector");
         exit(1);
     }
 
@@ -219,7 +202,7 @@ void write_vector(char *filename, int n, double *y)
     FILE *fp = fopen(filename, "w");
     if (!fp)
     {
-        perror("Error opening file");
+        perror("Error opening file: write_vector");
         exit(1);
     }
 
@@ -228,4 +211,70 @@ void write_vector(char *filename, int n, double *y)
         fprintf(fp, "%lf\n", y[i]);
     }
     fclose(fp);
+}
+
+// y = A * x ( A in CSR format)
+void matvec(int n, int *index, int *col_id, double *val, double *x, double *y)
+{
+    for (int i = 0; i < n; i ++)
+    {
+        y[i] = 0;
+        for (int j = index[i]; j < index[i + 1]; j ++)
+        {
+            y[i] += val[j] * x[col_id[j] % n];
+        }
+    }
+}
+
+// y_seg = A_block * x ( A in CSR format)
+void matvec_block(int n, int n_local, int block_begin, int *index_block, int *col_id_block, double *val_block, double *x_local, double *y)
+{
+    for (int i = block_begin; i < block_begin + n_local; i ++)
+    {
+        y[i] = 0;
+        for (int j = index_block[i]; j < index_block[i + 1]; j ++)
+        {
+            y[i] += val_block[j] * x_local[col_id_block[j] % n];
+        }
+    }
+}
+
+void normalize(int n, double *x)
+{
+    double sum = 0;
+    for (int i = 0; i < n; i ++)
+    {
+        sum += x[i] * x[i];
+    }
+    sum = sqrt(sum);
+    for (int i = 0; i < n; i ++)
+    {
+        x[i] /= sum;
+    }
+}
+
+double dot_vec(int n, double *x, double *y)
+{
+    double result = 0.0;
+    for (int i = 0; i < n; i ++)
+    {
+        result += x[i] * y[i];
+    }
+    return result;
+}
+
+void diff_vec(int n, double *x, double *y, double *result)
+{
+    for (int i = 0; i < n; i ++)
+    {
+        result[i] = x[i] - y[i];
+    }
+}
+
+void eq_vec(int n, double *x, double *y)
+{
+    for (int i = 0; i < n; i ++)
+    {
+        y[i] = x[i];
+    }
 }
