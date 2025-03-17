@@ -36,6 +36,13 @@ double eigenvalue(int n, int nnz, int *index, int *col_id, double *val, double *
     // x = x / ||x||
     normalize(n, x); 
 
+    FILE *fp = fopen(IterFile, "a+");
+    if (!fp)
+    {
+        perror("Error opening file: iteration");
+        exit(1);
+    }
+
     while (r > EPSILON)
     {
         // x_new = A * x
@@ -52,8 +59,10 @@ double eigenvalue(int n, int nnz, int *index, int *col_id, double *val, double *
         // x = x_new
         eq_vec(n, x_new, x);                                            
         count ++;
-        printf("Iteration %d, residual = %.10f\n", count, r);
+
+        fprintf(fp, "%d\t%.10f\n", count, r);       
     }
+    fclose(fp);
 
     //  x = A * x_new
     matvec(n, index, col_id, val, x_new, x);                     
@@ -89,9 +98,15 @@ int main(int argc, char** argv)
     lambda_max = eigenvalue(n, nnz, index, col_id, val, x);  
     double end = get_time();
 
-    printf("Max eigenvalue = %.10f\n", lambda_max);
+    FILE *fp = fopen(EigFile, "w");
+    if (!fp)
+    {
+        perror("Error opening file: eigenvalue");
+        exit(1);
+    }
+    fprintf(fp, "%.10f\n", lambda_max);
+    fclose(fp);
 
-    printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
     printf("%.10f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
 
     free(x);

@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-//#include <mpi.h>
-//#include <omp.h>
 #include <sys/time.h>
 #include <time.h>
 
@@ -72,101 +70,106 @@ void init(int N, double * x)
 }
 
 // Jacobi method
-void jacobi(FILE *Jac, int N, int * indices, int * col_id, double * values, double * b, double * x, double * x_new, double b_abs, double r_rel)
+void jacobi(FILE *Jac, int N, int *indices, int *col_id, double *values, double *b, double *x, double *x_new, double b_abs, double r_rel)
 {
     int iter = 0;
-    while (r_rel > EPSILON && iter < MAX_ITER)
+    while (r_rel > EPSILON && iter < MAX_ITER) 
     { 
-        for (int i = 0; i < N; i ++)
+        for (int i = 0; i < N; i ++) 
         {
             int self = -1;
             double sum = 0.0;
-            for (int j = indices[i]; j < indices[i + 1]; j ++)
+            for (int j = indices[i]; j < indices[i + 1]; j++) 
             {
-                if (col_id[j] != i)
+                if (col_id[j] != i) 
                 {
                     sum += values[j] * x[col_id[j]];
-                }
-                else
+                } 
+                else 
                 {
-                    self = j; // find the diagonal element
+                    self = j; // diagonal element
                 }
             }  
-            if (self != -1)
+            if (self != -1) 
             {
-                x_new[i] = (b[i] - sum) / values[self]; 
-                x[i] = x_new[i]; // update x 
-            } 
+                x_new[i] = (b[i] - sum) / values[self];  
+            }
+        }
+        
+        for (int i = 0; i < N; i ++) 
+        {
+            x[i] = x_new[i];
         }
 
-        // calculate the residual ||Ax - b||
         double res_sum2 = 0.0;
-        for (int i = 0; i < N; i ++)
+        for (int i = 0; i < N; i++) 
         {
             double ax_i = 0.0;
-            for (int j = indices[i]; j < indices[i + 1]; j ++)
+            for (int j = indices[i]; j < indices[i + 1]; j ++) 
             {
-                ax_i += x_new[col_id[j]] * values[j];
+                ax_i += values[j] * x[col_id[j]];
             }
             res_sum2 += (ax_i - b[i]) * (ax_i - b[i]);
         }
-        r_rel = sqrt(res_sum2) / b_abs; // relative residual
-        iter ++; // iteration count
-        fprintf(Jac, "%d %.9f\n", iter, r_rel); // write the interation count and relative residual
+        r_rel = sqrt(res_sum2) / b_abs;
+        iter++;
+        fprintf(Jac, "%d %.9f\n", iter, r_rel);
     }
 }
 
+
 // Gauss-Seidel method
-void gauss_seidel(FILE *GS, int N, int * indices, int * col_id, double * values, double * b, double * x, double b_abs, double r_rel)
+void gauss_seidel(FILE *GS, int N, int *indices, int *col_id, double *values, double *b, double *x, double b_abs, double r_rel)
 {
     int iter = 0;
-    while (r_rel > EPSILON && iter < MAX_ITER)
+    while (r_rel > EPSILON && iter < MAX_ITER) 
     {    
-        for (int i = 0; i < N; i ++)
+        for (int i = 0; i < N; i ++) 
         {
             double sum = 0.0;
             int self = -1;
-            for (int j = indices[i]; j < indices[i + 1]; j ++)
+            for (int j = indices[i]; j < indices[i + 1]; j++) 
             {
-                if (col_id[j] == i)
+                if (col_id[j] == i) 
                 {
-                    self = j; // find the diagonal element
+                    self = j; // diagonal element
                 }
             }
-            // split the sum into two parts: do not invert the order
-            for (int j = indices[i]; j < self; j ++)
+
+            for (int j = indices[i]; j < self; j ++) 
             {
                 sum += values[j] * x[col_id[j]]; 
             }
-            for (int j = self + 1; j < indices[i + 1]; j ++)
+            for (int j = self + 1; j < indices[i + 1]; j ++) 
             {
                 sum += values[j] * x[col_id[j]];
             }
-            if (self != -1)
+            if (self != -1) 
             {
                 x[i] = (b[i] - sum) / values[self]; 
             }    
         }
 
-        // calculate the residual ||Ax - b||
         double res_sum2 = 0.0;
-        for (int i = 0; i < N; i ++)
+        for (int i = 0; i < N; i ++) 
         {
             double ax_i = 0.0;
-            for (int j = indices[i]; j < indices[i + 1]; j ++)
+            for (int j = indices[i]; j < indices[i + 1]; j ++) 
             {
-                ax_i += x[col_id[j]] * values[j];
+                ax_i += values[j] * x[col_id[j]];
             }
             res_sum2 += (ax_i - b[i]) * (ax_i - b[i]);     
         }
         r_rel = sqrt(res_sum2) / b_abs;
-        iter ++;
-        fprintf(GS, "%d %.9f\n", iter, r_rel); // write the interation count and relative residual
+        iter++;
+        fprintf(GS, "%d %.9f\n", iter, r_rel);
     }
 }
 
+
+
 // matrix-vector multiplication
-void mat_vec_SCR(int N, int * indices, int * col_id, double * values, double * x, double * y)
+void mat_vec_CSR(int N, int * indices, int * col_id, double * values, double * x, double * y)
 {
     for (int i = 0; i < N; i ++)
     {
@@ -175,43 +178,6 @@ void mat_vec_SCR(int N, int * indices, int * col_id, double * values, double * x
         {
             y[i] += values[j] * x[col_id[j]];
         }
-    }
-}
-
-// Conjugate Gradient method
-void CG_CSR(FILE *CG, int N, int * indices, int * col_id, double * values, double * b, double * x, double b_abs, double r_rel)
-{
-    double d[N], r[N], Ad[N];
-    for (int i = 0; i < N; i ++)
-    {
-        r[i] = b[i];
-        d[i] = r[i];
-    }
-    int count = 0;
-    double alpha = 0.0, beta = 0.0, r_d = 0.0, r_Ad = 0.0, d_Ad = 0.0;
-    while (count < 1000 && r_rel > EPSILON)
-    {
-        mat_vec_SCR(N, indices, col_id, values, d, Ad);
-        for (int i = 0; i < N; i ++)
-        {
-            r_d += r[i] * d[i];
-            r_Ad += r[i] * Ad[i];
-            d_Ad += d[i] * Ad[i];
-        }
-        alpha = r_d / d_Ad;
-        for (int i = 0; i < N; i ++)
-        {
-            x[i] += alpha * d[i];
-            r[i] -= alpha * Ad[i];
-        }
-        r_rel = sqrt(r_d) / b_abs;
-        beta = r_d / r_Ad;
-        for (int i = 0; i < N; i ++)
-        {
-            d[i] = r[i] + beta * d[i];
-        }
-        count ++;
-        fprintf(CG, "%d %.9f\n", count, r_rel); // write the interation count and relative residual
     }
 }
 
@@ -257,89 +223,125 @@ void CSR(int N, double *V, int *indices, int *col_id, double *values)
     }
 }
 
-// initialization r0
-void init_r0(int N, double *b, double b_abs, double *r)
+// Conjugate Gradient Method
+void CG_CSR(FILE *CG, int N, int *indices, int *col_id, double *values, double *b, double *x, double b_abs) 
 {
-    for (int i = 0; i < N; i ++)
+    double *r = malloc(N * sizeof(double));
+    double *d = malloc(N * sizeof(double));
+    double *Ad = malloc(N * sizeof(double));
+
+    mat_vec_CSR(N, indices, col_id, values, x, r);
+    for (int i = 0; i < N; i ++) 
     {
-        r[i] = b[i] / b_abs;
+        r[i] = b[i] - r[i];
+        d[i] = r[i];
     }
+
+    double r_d_old = dot_prod(N, r, r);
+    double r_d_new;
+    int count = 0;
+
+    while (count < MAX_ITER && sqrt(r_d_old) / b_abs > EPSILON) 
+    {
+        mat_vec_CSR(N, indices, col_id, values, d, Ad);
+        double d_Ad = dot_prod(N, d, Ad);
+        double alpha = r_d_old / d_Ad;
+        
+        for (int i = 0; i < N; i++) 
+        {
+            x[i] += alpha * d[i];
+            r[i] -= alpha * Ad[i];
+        }
+
+        r_d_new = dot_prod(N, r, r);
+        double beta = r_d_new / r_d_old;
+        for (int i = 0; i < N; i++) 
+        {
+            d[i] = r[i] + beta * d[i];
+        }
+
+        r_d_old = r_d_new;
+        count++;
+        fprintf(CG, "%d %.9f\n", count, sqrt(r_d_new) / b_abs);
+    }
+
+    free(r);
+    free(d);
+    free(Ad);
 }
 
-// GMRES method
-void GMRES_CSR(FILE *GMRES, int N, int * indices, int * col_id, double * values, double * b, double * x, double b_abs, double * r)
+
+
+// GMRES Method
+void GMRES_CSR(FILE *GMRES, int N, int *indices, int *col_id, double *values, double *b, double *x, double b_abs) 
 {
-    double V[MAX_ITER + 1][N], H[MAX_ITER][MAX_ITER] = {0};
-    double g[MAX_ITER + 1] = {0}, y[MAX_ITER] = {0};
+    double *r = malloc(N * sizeof(double));
+    double *v[MAX_ITER + 1];
+    double *h = malloc((MAX_ITER + 1) * MAX_ITER * sizeof(double));
+    double *g = malloc((MAX_ITER + 1) * sizeof(double));
     
-    g[0] = b_abs;
-
-    // Arnoldi
-    for (int k = 0; k < MAX_ITER; k ++)
+    for (int i = 0; i < MAX_ITER + 1; i ++) 
     {
-        double w[N];
-
-        // w = A * V[k]
-        mat_vec_SCR(N, indices, col_id, values, V[k], w);
-
-        // orthogonalization
+        v[i] = malloc(N * sizeof(double));
+    }
+    
+    mat_vec_CSR(N, indices, col_id, values, x, r);
+    for (int i = 0; i < N; i ++) 
+    {
+        r[i] = b[i] - r[i];
+    }
+    
+    g[0] = norm(N, r);
+    for (int i = 0; i < N; i++) 
+    {
+        v[0][i] = r[i] / g[0];
+    }
+    
+    for (int k = 0; k < MAX_ITER; k++) 
+    {
+        double *w = malloc(N * sizeof(double));
+        mat_vec_CSR(N, indices, col_id, values, v[k], w);
+        
         for (int j = 0; j <= k; j++) 
         {
-            H[j][k] = dot_prod(N, w, V[j]);
-            for (int i = 0; i < N; i++)
+            h[j * MAX_ITER + k] = dot_prod(N, w, v[j]);
+            for (int i = 0; i < N; i++) 
             {
-                w[i] -= H[j][k] * V[j][i];
+                w[i] -= h[j * MAX_ITER + k] * v[j][i];
             }
         }
-        H[k + 1][k] = norm(N, w);
         
-        if (H[k + 1][k] < EPSILON)
+        h[(k + 1) * MAX_ITER + k] = norm(N, w);
+        if (h[(k + 1) * MAX_ITER + k] < EPSILON) 
         {
             break;
         }
-
-        // normalization
+        
         for (int i = 0; i < N; i++) 
         {
-            V[k+1][i] = w[i] / H[k+1][k];
+            v[k + 1][i] = w[i] / h[(k + 1) * MAX_ITER + k];
         }
+        
+        g[k + 1] = -g[k] * h[(k + 1) * MAX_ITER + k] / h[k * MAX_ITER + k];
+        g[k] /= h[k * MAX_ITER + k];
 
-        // least square
-        for (int i = 0; i <= k; i++) 
-        {
-            double temp = H[i][k];
-            H[i][k] = H[k][k] * temp - H[i][k] * H[k + 1][k];
-            H[k + 1][k] = H[k + 1][k] * temp + H[i][k] * H[k + 1][k];
-        }
-
-        g[k + 1] = -g[k] * H[k + 1][k] / H[k][k];
-        g[k] = g[k] / H[k][k];
-
+        double r_rel = fabs(g[k + 1]) / b_abs;
+        fprintf(GMRES, "%d %.9f\n", k + 1, r_rel);
+        
         if (fabs(g[k + 1]) < EPSILON) 
         {
             break;
-        } 
-    }
-
-    // compute y
-    for (int i = MAX_ITER - 1; i >= 0; i --) 
-    {
-        y[i] = g[i];
-        for (int j = i + 1; j < MAX_ITER; j ++)
-        {
-            y[i] -= H[i][j] * y[j];
-        }         
-        y[i] /= H[i][i];
-    }
-
-    // compute x = x0 + V * y
-    for (int i = 0; i < N; i ++) 
-    {
-        for (int j = 0; j < MAX_ITER; j ++) 
-        {
-            x[i] += V[j][i] * y[j];
         }
+        free(w);
     }
+    
+    for (int i = 0; i < MAX_ITER + 1; i ++) 
+    {
+        free(v[i]);
+    }
+    free(r);
+    free(h);
+    free(g);
 }
 
 int main(int argc, char** argv)
@@ -400,12 +402,6 @@ int main(int argc, char** argv)
     jacobi(Jac, N, indices, col_id, values, b, x, x_new, b_abs, r_rel);
     double end_jac = get_time();
 
-    //printf("Jacobi: ");
-/*    for (int i = 0; i < N; i ++)
-    {
-        printf("%.3f ", x[i]);
-    } */
-    //printf("\n");
     printf("Jacobi runtime: %.6f seconds\n", end_jac - start_jac);
     fclose(Jac);
 
@@ -423,12 +419,6 @@ int main(int argc, char** argv)
     gauss_seidel(GS, N, indices, col_id, values, b, x, b_abs, r_rel);
     double end_GS = get_time();
 
-    //printf("Gauss-Seidel: ");
-/*    for (int i = 0; i < N; i ++)
-    {
-        printf("%.3f ", x[i]);
-    }*/
-    //printf("\n");
     printf("Gauss-Seidel runtime: %.6f seconds\n", end_GS - start_GS);
     fclose(GS);
 
@@ -443,15 +433,9 @@ int main(int argc, char** argv)
 
     // compute conjugate gradient
     double start_CG = get_time();
-    CG_CSR(CG, N, indices, col_id, values, b, x, b_abs, r_rel);
+    CG_CSR(CG, N, indices, col_id, values, b, x, b_abs);
     double end_CG = get_time();
 
-    //printf("Conjugate Gradient: ");
-/*    for (int i = 0; i < N; i ++)
-    {
-        printf("%.3f ", x[i]);
-    }*/
-    //printf("\n");
     printf("Conjugate Gradient runtime: %.6f seconds\n", end_CG - start_CG);
     fclose(CG);
 
@@ -463,19 +447,12 @@ int main(int argc, char** argv)
     }
 
     init(N, x);
-    init_r0(N, b, b_abs, r);
     
     // compute generaized minimal residual
     double start_GMRES = get_time();
-    GMRES_CSR(GMRES, N, indices, col_id, values, b, x, b_abs, r);
+    GMRES_CSR(GMRES, N, indices, col_id, values, b, x, b_abs);
     double end_GMRES = get_time();
 
-    //printf("GMRES: ");
-/*    for (int i = 0; i < N; i ++)
-    {
-        printf("%.3f ", x[i]);
-    } */
-    //printf("\n");
     printf("GMRES runtime: %.6f seconds\n", end_GMRES - start_GMRES);
     fclose(GMRES);
 

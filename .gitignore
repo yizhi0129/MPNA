@@ -3,3 +3,23 @@ cmake-build-*/
 
 .vscode/
 .gitignore
+
+*/*.o
+*/*.a
+*/*.so
+*/*.dll
+*/*.exe
+*/*.out
+*/*.bin
+*/*.elf
+*/*.hex
+*/*.elf
+*/*.map
+*/*.d
+*/*.dSYM
+*/*.log
+*/*.log.*
+*/*.log-*
+*/*.log/*
+*/*.log-*/
+*/*.log.*/

@@ -1,5 +1,6 @@
 set terminal png
 set logscale y
+#set logscale x
 
 # Set common settings for the plot
 set xlabel "iterations"

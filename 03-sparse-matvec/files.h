@@ -226,19 +226,6 @@ void matvec(int n, int *index, int *col_id, double *val, double *x, double *y)
     }
 }
 
-// y_seg = A_block * x ( A in CSR format)
-void matvec_block(int n, int n_local, int block_begin, int *index_block, int *col_id_block, double *val_block, double *x_local, double *y)
-{
-    for (int i = block_begin; i < block_begin + n_local; i ++)
-    {
-        y[i] = 0;
-        for (int j = index_block[i]; j < index_block[i + 1]; j ++)
-        {
-            y[i] += val_block[j] * x_local[col_id_block[j] % n];
-        }
-    }
-}
-
 void normalize(int n, double *x)
 {
     double sum = 0;
