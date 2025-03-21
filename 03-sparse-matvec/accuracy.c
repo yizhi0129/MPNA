@@ -1,12 +1,11 @@
 #include "files.h"
 
 #define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-
 #define VectorFileRef "./serial_result1.txt"
-//#define VectorFileRef "./serial_result2.txt"
-
 #define ResultFile "./parallel_result1"
+
+//#define MatrixFile "./data/cfd1/cfd1.mtx"
+//#define VectorFileRef "./serial_result2.txt"
 //#define ResultFile "./parallel_result2"
 
 int main(int argc, char** argv)

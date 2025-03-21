@@ -4,15 +4,13 @@
 #include "files.h"
 
 #define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-
 #define VectorFile "./vector1.txt"
-//#define VectorFile "./vector2.txt"
-
 #define IterFile "./serial_iter1.txt"
-//#define IterFile "./iserial_ter2.txt"
-
 #define EigFile "./serial_eig1.txt"
+
+//#define MatrixFile "./data/cfd1/cfd1.mtx"
+//#define VectorFile "./vector2.txt"
+//#define IterFile "./iserial_ter2.txt"
 //#define EigFile "./serial_eig2.txt"
 
 #define EPSILON 1e-6
@@ -107,6 +105,8 @@ int main(int argc, char** argv)
     fprintf(fp, "%.10f\n", lambda_max);
     fclose(fp);
 
+    printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
+    printf("---------------------------------------------------------\n");
     printf("%.10f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
 
     free(x);

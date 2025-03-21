@@ -71,7 +71,7 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
         exit(1);
     }
 
-    char line[1024];
+    char line[MAX_SIZE];
     int count = 0;
     int *row = malloc(nnz * sizeof(int));
     int *col = malloc(nnz * sizeof(int));
@@ -80,7 +80,10 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
     while (fgets(line, sizeof(line), fp))
     {
         int n_check = 0, nnz_check = 0;
-        if (line[0] == '%') continue;
+        if (line[0] == '%') 
+        {
+            continue;
+        }
 
         if (count == 0)
         {
@@ -130,26 +133,24 @@ void read_matrix(char *filename, int n, int nnz, int *index, int *col_id, double
         // CSR
         for (int i = 0; i < nnz; i++) 
         {
-            col_id[i] = col[i] + n * row[i];
+            col_id[i] = col[i]; // change to column index instead of global index
             val[i] = A[i];
         }    
 
         // complete index
         index[0] = 0;
-        int next_row_boundary = n;
-        int row_counter = 1;
-        for (int i = 0; i < nnz; i++)
+        int current_row = 0;
+        for (int i = 0; i < nnz; i ++)
         {
-            while (col_id[i] >= next_row_boundary && row_counter < n)
+            while (row[i] > current_row)
             {
-                index[row_counter] = i;
-                row_counter ++;
-                next_row_boundary += n;
+                current_row ++;
+                index[current_row] = i;
             }
         }
-        for (; row_counter <= n; row_counter ++)
+        for (; current_row < n; current_row ++)
         {
-            index[row_counter] = nnz;
+            index[current_row + 1] = nnz;
         }
     }
 
@@ -172,7 +173,7 @@ void gen_vector(char *filename, int n, double *x)
     for (int i = 0; i < n; i ++)
     {
         x[i] = rand() / (double)RAND_MAX;
-        fprintf(fp, "%lf\n", x[i]);
+        fprintf(fp, "%.10f\n", x[i]);
     }
     fclose(fp);
 }
@@ -208,7 +209,7 @@ void write_vector(char *filename, int n, double *y)
 
     for (int i = 0; i < n; i ++)
     {
-        fprintf(fp, "%lf\n", y[i]);
+        fprintf(fp, "%.10f\n", y[i]);
     }
     fclose(fp);
 }
@@ -221,7 +222,7 @@ void matvec(int n, int *index, int *col_id, double *val, double *x, double *y)
         y[i] = 0;
         for (int j = index[i]; j < index[i + 1]; j ++)
         {
-            y[i] += val[j] * x[col_id[j] % n];
+            y[i] += val[j] * x[col_id[j]];
         }
     }
 }

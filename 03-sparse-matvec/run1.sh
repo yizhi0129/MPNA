@@ -4,7 +4,7 @@ make clean
 make
 
 # matrix vertor multiplication
-./mat-vec > n1.txt
+./mat-vec > mat_vec_time_n1.txt
 mpirun -np 2 ./mat-vec-p > parallel_result1_2.txt
 mpirun -np 3 ./mat-vec-p > parallel_result1_3.txt
 mpirun -np 4 ./mat-vec-p > parallel_result1_4.txt
@@ -29,14 +29,14 @@ gnuplot err_plot1.plt
 gnuplot mat_perf_plot1.plt
 
 # eigenvalue problem
-./eigenvalue > eig_n1_1.txt
-mpirun -np 2 ./eigenvalue-p > eig_n1_2.txt
-mpirun -np 3 ./eigenvalue-p > eig_n1_3.txt
-mpirun -np 4 ./eigenvalue-p > eig_n1_4.txt
-mpirun -np 5 ./eigenvalue-p > eig_n1_5.txt
-mpirun -np 6 ./eigenvalue-p > eig_n1_6.txt
-mpirun -np 7 ./eigenvalue-p > eig_n1_7.txt
-mpirun -np 8 ./eigenvalue-p > eig_n1_8.txt
+./eigenvalue > eig_time_n1.txt
+mpirun -np 2 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 3 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 4 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 5 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 6 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 7 ./eigenvalue-p >> eig_time_n1.txt
+mpirun -np 8 ./eigenvalue-p >> eig_time_n1.txt
 
 # Gershgorin circle
 ./gershgorin > gersh_n1.txt
