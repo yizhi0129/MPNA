@@ -2,8 +2,8 @@
 
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
 
 void circle(int n, int *index, int *col_id, double *val)
 {

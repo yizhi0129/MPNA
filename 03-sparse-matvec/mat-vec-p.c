@@ -4,13 +4,13 @@
 
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-#define VectorFile "./vector1.txt"
-#define PerfFile "./mat_vec_time_n1.txt"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define VectorFile "./vector1.txt"
+//#define PerfFile "./mat_vec_time_n1.txt"
 
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-//#define VectorFile "./vector2.txt"
-//#define PerfFile "./mat_vec_time_n2.txt"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
+#define VectorFile "./vector2.txt"
+#define PerfFile "./mat_vec_time_n2.txt"
 
 // timer
 double get_time()
@@ -38,6 +38,7 @@ int main(int argc, char **argv)
     int *sendc_v = NULL, *disp_v = NULL;
     int *recvc_y = NULL, *disp_y = NULL;
 
+    double start = 0.0, end = 0.0;
 
     if (rank == 0)
     {
@@ -141,10 +142,9 @@ int main(int argc, char **argv)
     MPI_Barrier(MPI_COMM_WORLD);
 
     // compute y_local and measure time
-    double start = get_time();
+    if (rank == 0) start = get_time();
     matvec(n_local, index_block, col_id_block, val_block, x, y_local);
-    MPI_Barrier(MPI_COMM_WORLD);
-    double end = get_time();
+    if (rank == 0) end = get_time();
 
 
     // gather y_local to y
@@ -158,7 +158,7 @@ int main(int argc, char **argv)
             perror("Error opening file: main");
             exit(1);
         }
-        fprintf(fp, "%.10f\t%d\t%d\t%d\n", end - start, size, n, nnz);
+        fprintf(fp, "%.10e\t%d\t%d\t%d\n", end - start, size, n, nnz);
         fclose(fp);
 
         for (int i = 0; i < n; i ++)

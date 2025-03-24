@@ -4,15 +4,15 @@
 
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-#define VectorFile "./vector1.txt"
-#define IterFile "./parallel_iter1"
-#define EigFile "./parallel_eig1"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define VectorFile "./vector1.txt"
+//#define IterFile "./parallel_iter1"
+//#define EigFile "./parallel_eig1"
 
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-//#define VectorFile "./vector2.txt"
-//#define IterFile "./parallel_iter2"
-//#define EigFile "./parallel_eig2"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
+#define VectorFile "./vector2.txt"
+#define IterFile "./parallel_iter2"
+#define EigFile "./parallel_eig2"
 
 #define EPSILON 1e-6
 
@@ -24,180 +24,18 @@ double get_time()
     return tv.tv_sec + tv.tv_usec / 1e6;
 }
 
-double distributed_eigenvalue(
-    int n_local, int global_n,
-    int *index, int *col_id, double *val,
-    double *x, double *x_new, MPI_Comm comm,
-    const char* iter_filename) 
-{
-    int rank, size;
-    MPI_Comm_rank(comm, &rank);
-    MPI_Comm_size(comm, &size);
-
-    double lambda_max = 0.0, r = 1.0;
-    int count = 0;
-    double *diff = (double *)malloc(global_n * sizeof(double));
-    double *x_local = (double *)malloc(n_local * sizeof(double));
-    double *recvbuf = (rank == 0) ? malloc(global_n * sizeof(double)) : NULL;
-
-    int *recvcounts = (int *)malloc(size * sizeof(int));
-    int *displs = (int *)malloc(size * sizeof(int));
-
-    MPI_Allgather(&n_local, 1, MPI_INT, recvcounts, 1, MPI_INT, comm);
-    displs[0] = 0;
-    for (int i = 1; i < size; i++) displs[i] = displs[i-1] + recvcounts[i-1];
-
-    normalize(global_n, x);
-
-    FILE *fp = NULL;
-    if (rank == 0) 
-    {
-        fp = fopen(iter_filename, "w");
-        if (!fp) 
-        {
-            perror("Error opening iteration file");
-            MPI_Abort(comm, 1);
-        }
-    }
-
-    while (r > EPSILON) 
-    {
-        matvec(n_local, index, col_id, val, x, x_local);
-        MPI_Allgatherv(x_local, n_local, MPI_DOUBLE, x_new, recvcounts, displs, MPI_DOUBLE, comm);
-
-        normalize(global_n, x_new);
-
-        for (int i = 0; i < global_n; i ++) 
-        {
-            diff[i] = x_new[i] - x[i];
-        }
-
-        double local_r = dot_vec(global_n, diff, diff);
-        MPI_Allreduce(&local_r, &r, 1, MPI_DOUBLE, MPI_SUM, comm);
-        r = sqrt(r);
-
-        if (rank == 0) 
-        {
-            fprintf(fp, "%d\t%.10f\n", ++count, r);
-        }
-
-        for (int i = 0; i < global_n; i ++) 
-        {
-            x[i] = x_new[i];
-        }
-    }
-
-    matvec(n_local, index, col_id, val, x_new, x_local);
-    MPI_Allgatherv(x_local, n_local, MPI_DOUBLE, x, recvcounts, displs, MPI_DOUBLE, comm);
-
-    double local_num = dot_vec(n_local, x_local, x_new + displs[rank]);
-    double global_num = 0.0;
-    MPI_Allreduce(&local_num, &global_num, 1, MPI_DOUBLE, MPI_SUM, comm);
-
-    double denom = dot_vec(global_n, x_new, x_new);
-    MPI_Allreduce(MPI_IN_PLACE, &denom, 1, MPI_DOUBLE, MPI_SUM, comm);
-
-    lambda_max = global_num / denom;
-
-    if (rank == 0 && fp) 
-    {
-        fclose(fp);
-    }
-
-    free(diff); 
-    free(x_local); 
-    free(recvcounts); 
-    free(displs);
-
-    if (recvbuf) 
-    {
-        free(recvbuf);
-    }
-
-    return lambda_max;
-}
-
-void distribute_csr(
-    int *global_index, int *global_col, double *global_val,
-    int n,
-    int **local_index, int **local_col, double **local_val,
-    int *n_local, int *nnz_local,
-    MPI_Comm comm) 
-{
-    int rank, size;
-    MPI_Comm_rank(comm, &rank);
-    MPI_Comm_size(comm, &size);
-
-    int *sendcounts = NULL, *displs = NULL;
-    if (rank == 0) 
-    {
-        sendcounts = (int *)malloc(size * sizeof(int));
-        displs = (int *)malloc(size * sizeof(int));
-    }
-
-    int rows_per_proc = n / size;
-    int rem = n % size;
-    int row_start = rank * rows_per_proc + (rank < rem ? rank : rem);
-    int row_end = row_start + rows_per_proc + (rank < rem);
-    *n_local = row_end - row_start;
-
-    int start_nnz = 0, end_nnz = 0;
-    if (rank == 0) 
-    {
-        for (int r = 0; r < size; r ++) 
-        {
-            int rs = r * rows_per_proc + (r < rem ? r : rem);
-            int re = rs + rows_per_proc + (r < rem);
-            sendcounts[r] = global_index[re] - global_index[rs];
-            displs[r] = global_index[rs];
-        }
-    }
-
-    MPI_Scatter(sendcounts, 1, MPI_INT, nnz_local, 1, MPI_INT, 0, comm);
-
-    *local_index = (int *)malloc((*n_local + 1) * sizeof(int));
-    *local_col = (int *)malloc(*nnz_local * sizeof(int));
-    *local_val = (double *)malloc(*nnz_local * sizeof(double));
-
-    if (rank == 0) 
-    {
-        for (int r = 0; r < size; r ++) 
-        {
-            int rs = r * rows_per_proc + (r < rem ? r : rem);
-            int offset = global_index[rs];
-            for (int i = 0; i <= (r < rem ? rows_per_proc + 1 : rows_per_proc); i ++) 
-            {
-                global_index[rs + i] -= offset;
-            }
-        }
-        for (int i = 0; i <= *n_local; i ++) 
-        {
-            (*local_index)[i] = global_index[row_start + i];
-        }
-    }
-    MPI_Bcast(*local_index, *n_local + 1, MPI_INT, 0, comm);
-    MPI_Scatterv(global_col, sendcounts, displs, MPI_INT, *local_col, *nnz_local, MPI_INT, 0, comm);
-    MPI_Scatterv(global_val, sendcounts, displs, MPI_DOUBLE, *local_val, *nnz_local, MPI_DOUBLE, 0, comm);
-
-    if (rank == 0) 
-    {
-        free(sendcounts);
-        free(displs);
-    }
-}
-
 int main(int argc, char **argv) 
 {
-    MPI_Init(&argc, &argv);
     int rank, size;
+    MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    char iter_filename[256], eig_filename[256];
+    char iter_file[256], eig_file[256];
     if (rank == 0) 
     {
-        sprintf(iter_filename, "%s_%d.txt", IterFile, size);
-        sprintf(eig_filename, "%s_%d.txt", EigFile, size);
+        sprintf(iter_file, "%s_%d.txt", IterFile, size);
+        sprintf(eig_file, "%s_%d.txt", EigFile, size);
     }
 
     int n = 0, nnz = 0;
@@ -205,53 +43,210 @@ int main(int argc, char **argv)
     double *val = NULL, *x = NULL, *x_new = NULL;
 
     int *index_block = NULL, *col_id_block = NULL;
-    double *val_block = NULL;
+    double *val_block = NULL, *x_new_local = NULL;
     int n_local = 0, nnz_local = 0;
+
+    int *sendc_v = NULL, *disp_v = NULL;
+    int *recvc_y = NULL, *disp_y = NULL;
+
+    double start = 0.0, end = 0.0;
 
     if (rank == 0) 
     {
         read_size(MatrixFile, &n, &nnz);
         nnz = nnz * 2 - n;
     }
-    MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
+    MPI_Bcast(&n, 1, MPI_INT, 0, MPI_COMM_WORLD);
     x = (double *)malloc(n * sizeof(double));
-    x_new = (double *)malloc(n * sizeof(double));
-    read_vector(VectorFile, n, x);
 
     if (rank == 0) 
     {
         index = (int *)malloc((n + 1) * sizeof(int));
         col_id = (int *)malloc(nnz * sizeof(int));
         val = (double *)malloc(nnz * sizeof(double));
+        x_new = (double *)malloc(n * sizeof(double));
+
+        sendc_v = (int *)malloc(size * sizeof(int));
+        disp_v = (int *)malloc(size * sizeof(int));
+    
+        recvc_y = (int *)malloc(size * sizeof(int));
+        disp_y = (int *)malloc(size * sizeof(int));
+
         read_matrix(MatrixFile, n, nnz, index, col_id, val);
+
+        for (int r = 0; r < size; r ++)
+        {
+            // compute n_loacl for index_block and nnz_local for col_id_block and val_block
+            int n_r = n / size + (r < (n % size));
+            int block_start = r * (n / size) + (r < (n % size) ? r : (n % size)); 
+
+            int nnz_r = index[block_start + n_r] - index[block_start];
+
+            sendc_v[r] = nnz_r;
+            disp_v[r] = index[block_start];
+
+            recvc_y[r] = n_r;
+            disp_y[r] = block_start;
+
+            // send n_local, nnz_local and index_block to other processes
+            MPI_Send(&n_r, 1, MPI_INT, r, 10, MPI_COMM_WORLD);
+            MPI_Send(&nnz_r, 1, MPI_INT, r, 20, MPI_COMM_WORLD);
+
+            int *index_tmp = (int *)malloc((n_r + 1) * sizeof(int));
+            int offset = index[block_start];
+            for (int i = 0; i <= n_r; i ++) 
+            {
+                index_tmp[i] = index[block_start + i] - offset;
+            }
+            MPI_Send(index_tmp, n_r + 1, MPI_INT, r, 30, MPI_COMM_WORLD);
+            free(index_tmp);
+        }
+
+        // local index for rank 0
+        n_local = n / size + (rank < (n % size));
+        nnz_local = index[n_local] - index[0];
+        index_block = (int *)malloc((n_local + 1) * sizeof(int));
+        for (int i = 0; i < n_local + 1; i ++)
+        {
+            index_block[i] = index[i];
+        }
+
+        // local col_id and local val for rank 0
+        col_id_block = (int *)malloc(nnz_local * sizeof(int));
+        val_block = (double *)malloc(nnz_local * sizeof(double));
+        for (int i = 0; i < nnz_local; i ++)
+        {
+            col_id_block[i] = col_id[i];
+            val_block[i] = val[i];
+        }
+
+        read_vector(VectorFile, n, x);
+    }
+    else
+    {
+        // receive n_local and nnz_local from rank 0
+        MPI_Recv(&n_local, 1, MPI_INT, 0, 10, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(&nnz_local, 1, MPI_INT, 0, 20, MPI_COMM_WORLD, MPI_STATUS_IGNORE);        
+
+        // receive local index from rank 0 
+        index_block = (int *)malloc((n_local + 1) * sizeof(int));
+        MPI_Recv(index_block, n_local + 1, MPI_INT, 0, 30, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        // malloc local col_id and local val from rank 0
+        if (nnz_local > 0) 
+        {
+            col_id_block = (int *)malloc(nnz_local * sizeof(int));
+            val_block = (double *)malloc(nnz_local * sizeof(double));
+        }
     }
 
-    distribute_csr(index, col_id, val, n, &index_block, &col_id_block, &val_block, &n_local, &nnz_local, MPI_COMM_WORLD);
+    x_new_local = (double *)malloc(n_local * sizeof(double));
 
-    double start = get_time();
-    double lambda = distributed_eigenvalue(n_local, n, index_block, col_id_block, val_block, x, x_new, MPI_COMM_WORLD, iter_filename);
-    double end = get_time();
+    // scatter col_id_block and val_block
+    MPI_Scatterv(col_id, sendc_v, disp_v, MPI_INT, col_id_block, nnz_local, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Scatterv(val, sendc_v, disp_v, MPI_DOUBLE, val_block, nnz_local, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD); 
+
+
+    FILE *fp = NULL;
+    if (rank == 0) 
+    {
+        fp = fopen(iter_file, "a+");
+        if (!fp) 
+        {
+            perror("Error opening file");
+            MPI_Abort(MPI_COMM_WORLD, 1);
+        }
+    }
+
+
+    // power iteration begins
+    if (rank == 0)  start = get_time();
+
+    double r = 1.0;
+    int count = 0;
+    double *diff = NULL;
+
+    if (rank == 0)
+    {
+        diff = (double *) malloc(n * sizeof(double));
+        // x = x / ||x||
+        normalize(n, x); 
+    }
+
+    MPI_Bcast(x, n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    
+    while (r > EPSILON)
+    {
+        // x_new_local = A * x
+        matvec(n_local, index_block, col_id_block, val_block, x, x_new_local); 
+
+        MPI_Gatherv(x_new_local, n_local, MPI_DOUBLE, x_new, recvc_y, disp_y, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+        if (rank == 0)
+        {
+            // x_new = x_new / ||x_new||
+            normalize(n, x_new); 
+            diff_vec(n, x_new, x, diff);
+
+            // r = ||x_new - x||
+            r = dot_vec(n, diff, diff);
+            r = sqrt(r);      
+        
+            // x = x_new
+            eq_vec(n, x_new, x);                                            
+            count ++;
+
+            fprintf(fp, "%d\t%.10f\n", count, r);
+        }
+
+        MPI_Bcast(x, n, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&r, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    }
+
+    if (rank == 0 && fp != NULL) 
+    {
+        fclose(fp);
+    }
+
+    //  x = A * x_new
+    matvec(n_local, index_block, col_id_block, val_block, x, x_new_local);   
+
+    MPI_Gatherv(x_new_local, n_local, MPI_DOUBLE, x_new, recvc_y, disp_y, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+
+    // power iteration ends
+    if (rank == 0) end = get_time();
 
     if (rank == 0) 
     {
-        FILE *fp = fopen(eig_filename, "w");
-        if (!fp) 
+        // lambda_max = x^T * A * x / x^T * x
+        double lambda_max = dot_vec(n, x, x_new) / dot_vec(n, x, x); 
+
+        FILE *fp2 = fopen(eig_file, "w");
+        if (!fp2) 
         {
             perror("Error opening EigFile");
             exit(1);
         }
-        fprintf(fp, "%.10f\n", lambda);
-        fclose(fp);
-        printf("%.10f\t%d\t%d\t%d\n", end - start, size, n, nnz);
+        fprintf(fp2, "%.10f\n", lambda_max);
+        fclose(fp2);
+
+        printf("%.10e\t%d\t%d\t%d\n", end - start, size, n, nnz);
 
         free(index); 
         free(col_id); 
         free(val);
+        free(x_new);
+        free(sendc_v);
+        free(disp_v);
+        free(recvc_y);
+        free(disp_y);
     }
 
     free(x); 
-    free(x_new);
+    free(x_new_local);
     free(index_block); 
     free(col_id_block); 
     free(val_block);

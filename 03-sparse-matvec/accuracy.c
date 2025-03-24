@@ -1,12 +1,12 @@
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-#define VectorFileRef "./serial_result1.txt"
-#define ResultFile "./parallel_result1"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define VectorFileRef "./serial_result1.txt"
+//#define ResultFile "./parallel_result1"
 
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-//#define VectorFileRef "./serial_result2.txt"
-//#define ResultFile "./parallel_result2"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
+#define VectorFileRef "./serial_result2.txt"
+#define ResultFile "./parallel_result2"
 
 int main(int argc, char** argv)
 {
@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     double error = dot_vec(n, diff, diff);
     error /= ref;
     error = sqrt(error);
-    printf("%d\t%.10f\n", n_proc, error);
+    printf("%d\t%.10e\n", n_proc, error);
 
     free(xs);
     free(xp);

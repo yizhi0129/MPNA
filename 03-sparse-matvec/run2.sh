@@ -14,6 +14,15 @@ mpirun -np 6 ./mat-vec-p > parallel_result2_6.txt
 mpirun -np 7 ./mat-vec-p > parallel_result2_7.txt
 mpirun -np 8 ./mat-vec-p > parallel_result2_8.txt
 
+# error
+./accuracy 2 > err_n2.txt
+./accuracy 3 >> err_n2.txt
+./accuracy 4 >> err_n2.txt
+./accuracy 5 >> err_n2.txt
+./accuracy 6 >> err_n2.txt
+./accuracy 7 >> err_n2.txt
+./accuracy 8 >> err_n2.txt
+
 # eigenvalue problem
 ./eigenvalue > eig_time_n2.txt
 mpirun -np 2 ./eigenvalue-p >> eig_time_n2.txt

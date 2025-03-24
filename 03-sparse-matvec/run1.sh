@@ -22,12 +22,6 @@ mpirun -np 8 ./mat-vec-p > parallel_result1_8.txt
 ./accuracy 7 >> err_n1.txt
 ./accuracy 8 >> err_n1.txt
 
-# plot error
-gnuplot err_plot1.plt
-
-# plot performance
-gnuplot mat_perf_plot1.plt
-
 # eigenvalue problem
 ./eigenvalue > eig_time_n1.txt
 mpirun -np 2 ./eigenvalue-p >> eig_time_n1.txt
@@ -43,9 +37,3 @@ mpirun -np 8 ./eigenvalue-p >> eig_time_n1.txt
 
 # plot circles
 gnuplot gersh_plot1.plt
-
-# plot performance
-gnuplot eig_perf_plot1.plt
-
-# plot iterates
-gnuplot eig_iter_plot1.plt

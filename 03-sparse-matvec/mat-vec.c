@@ -3,13 +3,13 @@
 
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-#define VectorFile "./vector1.txt"
-#define ResultFile "./serial_result1.txt"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define VectorFile "./vector1.txt"
+//#define ResultFile "./serial_result1.txt"
 
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-//#define VectorFile "./vector2.txt"
-//#define ResultFile "./serial_result2.txt"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
+#define VectorFile "./vector2.txt"
+#define ResultFile "./serial_result2.txt"
 
 // timer
 double get_time()
@@ -45,7 +45,7 @@ int main(int argc, char** argv)
 
     printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
     printf("---------------------------------------------------------\n");
-    printf("%.10f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
+    printf("%.10e\t%d\t%d\t%d\n", end - start, 1, n, nnz);
     write_vector(ResultFile, n, y);
 
     free(x);

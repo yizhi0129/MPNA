@@ -3,15 +3,15 @@
 
 #include "files.h"
 
-#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
-#define VectorFile "./vector1.txt"
-#define IterFile "./serial_iter1.txt"
-#define EigFile "./serial_eig1.txt"
+//#define MatrixFile "./data/bcsstk03/bcsstk03.mtx"
+//#define VectorFile "./vector1.txt"
+//#define IterFile "./serial_iter1.txt"
+//#define EigFile "./serial_eig1.txt"
 
-//#define MatrixFile "./data/cfd1/cfd1.mtx"
-//#define VectorFile "./vector2.txt"
-//#define IterFile "./iserial_ter2.txt"
-//#define EigFile "./serial_eig2.txt"
+#define MatrixFile "./data/cfd1/cfd1.mtx"
+#define VectorFile "./vector2.txt"
+#define IterFile "./iserial_ter2.txt"
+#define EigFile "./serial_eig2.txt"
 
 #define EPSILON 1e-6
 
@@ -23,7 +23,7 @@ double get_time()
     return tv.tv_sec + tv.tv_usec / 1e6;
 }
 
-double eigenvalue(int n, int nnz, int *index, int *col_id, double *val, double *x)
+double eigenvalue(int n, int *index, int *col_id, double *val, double *x)
 {
     double lambda_max = 0.0;
     double r = 1.0;
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
     read_vector(VectorFile, n, x);
 
     double start = get_time();
-    lambda_max = eigenvalue(n, nnz, index, col_id, val, x);  
+    lambda_max = eigenvalue(n, index, col_id, val, x);  
     double end = get_time();
 
     FILE *fp = fopen(EigFile, "w");
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 
     printf("Time;\tNumber of proscesses;\tMatrix size;\tNon-zeros\n");
     printf("---------------------------------------------------------\n");
-    printf("%.10f\t%d\t%d\t%d\n", end - start, 1, n, nnz);
+    printf("%.10e\t%d\t%d\t%d\n", end - start, 1, n, nnz);
 
     free(x);
     free(col_id);
