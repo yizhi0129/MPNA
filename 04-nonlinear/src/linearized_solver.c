@@ -19,7 +19,7 @@ void solve_linearized_implicit(int N, int max_steps)
     double gamma = GAMMA;
     double L = 1.0;
     double dx = L / (N - 1);
-    double sigma = SIGMA, delta = 0.2;
+    double sigma = SIGMA;
 
     int ilower = myid * N / num_procs;
     int iupper = (myid + 1) * N / num_procs - 1;
@@ -28,13 +28,13 @@ void solve_linearized_implicit(int N, int max_steps)
     double *X = calloc(local_n, sizeof(double));
     double *Q = calloc(local_n, sizeof(double));
     double *u = calloc(local_n + 2, sizeof(double));  // ghost cells
-    double *u_new = calloc(local_n, sizeof(double));
+
     for (int i = 0; i < local_n; i ++) 
     {
         int gi = ilower + i;
         X[i] = gi * dx;
         Q[i] = heaviside(X[i]);
-        u[i+1] = 1.0;
+        u[i + 1] = 1.0;
     }
 
     for (int step = 0; step < max_steps; step ++) 
@@ -43,17 +43,19 @@ void solve_linearized_implicit(int N, int max_steps)
         double send_l = u[1], recv_l = 0.0;
         double send_r = u[local_n], recv_r = 0.0;
         MPI_Request reqs[4];
+        int req_idx = 0;
         if (myid > 0)
-            MPI_Isend(&send_l, 1, MPI_DOUBLE, myid - 1, 0, MPI_COMM_WORLD, &reqs[0]);
+            MPI_Isend(&send_l, 1, MPI_DOUBLE, myid - 1, 0, MPI_COMM_WORLD, &reqs[req_idx ++]);
         if (myid < num_procs - 1)
-            MPI_Isend(&send_r, 1, MPI_DOUBLE, myid + 1, 1, MPI_COMM_WORLD, &reqs[1]);
+            MPI_Isend(&send_r, 1, MPI_DOUBLE, myid + 1, 1, MPI_COMM_WORLD, &reqs[req_idx ++]);
         if (myid > 0)
-            MPI_Irecv(&recv_l, 1, MPI_DOUBLE, myid - 1, 1, MPI_COMM_WORLD, &reqs[2]);
+            MPI_Irecv(&recv_l, 1, MPI_DOUBLE, myid - 1, 1, MPI_COMM_WORLD, &reqs[req_idx ++]);
         if (myid < num_procs - 1)
-            MPI_Irecv(&recv_r, 1, MPI_DOUBLE, myid + 1, 0, MPI_COMM_WORLD, &reqs[3]);
-        MPI_Waitall((myid == 0 || myid == num_procs - 1) ? 2 : 4, reqs, MPI_STATUSES_IGNORE);
-        u[0] = (myid == 0) ? u[2] : recv_l;
-        u[local_n + 1] = (myid == num_procs - 1) ? 1.0 : recv_r;
+            MPI_Irecv(&recv_r, 1, MPI_DOUBLE, myid + 1, 0, MPI_COMM_WORLD, &reqs[req_idx++]);
+        MPI_Waitall(req_idx, reqs, MPI_STATUSES_IGNORE);
+
+        u[0] = (myid != 0) * recv_l;
+        u[local_n + 1] = (myid != num_procs - 1) * recv_r;
 
         // compute dt
         double umax_local = 0.0;
@@ -66,7 +68,7 @@ void solve_linearized_implicit(int N, int max_steps)
         // Kn+1/2
         double *Kn12 = calloc(local_n + 1, sizeof(double));
         for (int i = 0; i < local_n + 1; i ++)
-            Kn12[i] = 0.5 * (pow(u[i], 2) + pow(u[i+1], 2));
+            Kn12[i] = 0.5 * (kappa(u[i + 1]) + kappa(u[i + 2]));
 
         // HYPRE setup
         HYPRE_IJMatrix A;
@@ -93,25 +95,29 @@ void solve_linearized_implicit(int N, int max_steps)
 
             if (gi == 0) 
             {
-                rhs = u[1] + dt * (Q[i] + sigma);
-                cols[0] = gi; cols[1] = gi + 1;
-                vals[0] = 1 + dt * (2*K0*Kn12[0]/(dx*dx) + sigma*pow(u[1], 3));
-                vals[1] = -2 * dt * K0 * Kn12[0] / (dx * dx);
+                rhs = u[1] + dt * (Q[0] + sigma);
+                cols[0] = 0; 
+                cols[1] = 1;
+                vals[0] = 1 + dt * (2 * Kn12[0] / (dx * dx) + 4 * sigma * pow(u[1], 3));
+                vals[1] = -2 * dt * Kn12[0] / (dx * dx);
                 ncols = 2;
             } 
             else if (gi == N - 1) 
             {
                 rhs = 1.0;
-                cols[0] = gi; vals[0] = 1.0;
+                cols[0] = gi; 
+                vals[0] = 1.0;
                 ncols = 1;
             } 
             else 
             {
-                rhs = u[i+1] + dt * (Q[i] + sigma);
-                cols[0] = gi - 1; cols[1] = gi; cols[2] = gi + 1;
-                vals[0] = -dt * K0 * Kn12[i] / (dx * dx);
-                vals[1] = 1 + dt * (K0 / (dx * dx) * (Kn12[i] + Kn12[i+1]) + sigma * pow(u[i+1], 3));
-                vals[2] = -dt * K0 * Kn12[i+1] / (dx * dx);
+                rhs = u[i + 1] + dt * (Q[i] + sigma);
+                cols[0] = gi - 1; 
+                cols[1] = gi; 
+                cols[2] = gi + 1;
+                vals[0] = - dt * Kn12[i - 1] / (dx * dx);
+                vals[1] = 1 + dt * ((Kn12[i - 1] + Kn12[i]) / (dx * dx) + 4 * sigma * pow(u[i + 1], 3));
+                vals[2] = - dt * Kn12[i] / (dx * dx);
                 ncols = 3;
             }
 
@@ -131,18 +137,16 @@ void solve_linearized_implicit(int N, int max_steps)
             int gi = ilower + i;
             double val;
             HYPRE_IJVectorGetValues(x, 1, &gi, &val);
-            double diff = (val - u[i+1]) / dt;
+            double diff = (val - u[i + 1]) / dt;
             err2_local += diff * diff;
-            u_new[i] = val;
+            u[i + 1] = val;
         }
 
         double err2_global;
         MPI_Allreduce(&err2_local, &err2_global, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
         double err = sqrt(err2_global / N);
-        if (myid == 0)
+        if (myid == 0 && step % 10 == 0)
             printf("Step %d: dt = %.2e, error = %.2e\n", step, dt, err);
-
-        for (int i = 0; i < local_n; i++) u[i+1] = u_new[i];
 
         free(Kn12);
         HYPRE_IJMatrixDestroy(A);
@@ -152,5 +156,7 @@ void solve_linearized_implicit(int N, int max_steps)
         if (err < 1e-5) break;
     }
 
-    free(X); free(Q); free(u); free(u_new);
+    free(X); 
+    free(Q); 
+    free(u); 
 }
