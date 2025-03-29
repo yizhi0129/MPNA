@@ -30,24 +30,6 @@ int main(int argc, char **argv)
         else if (strcmp(argv[i], "--newton") == 0) use_newton = 1;
     }
 
-    if (myid == 0) 
-    {
-        printf("=== Nonlinear Diffusion Solver ===\n");
-        printf("N = %d\n", N);
-        if (use_newton) 
-        {
-            printf("Method = Newton\n");
-            printf("Tolerance = %.2e\n", tol);
-            printf("Max Iters = %d\n", max_iter);
-        } 
-        else 
-        {
-            printf("Method = Linearized Implicit Scheme\n");
-            printf("Time Steps = %d\n", steps);
-        }
-        printf("=================================\n");
-    }
-
     init_hypre();
 
     if (use_newton) 

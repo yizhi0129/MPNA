@@ -5,6 +5,7 @@
 void init_hypre() 
 {
     HYPRE_Init();
+    HYPRE_SetLogLevel(0);
 }
 
 void finalize_hypre() 
@@ -28,10 +29,10 @@ void solve_with_hypre(HYPRE_IJMatrix A_ij, HYPRE_IJVector b_ij, HYPRE_IJVector x
     HYPRE_ParCSRGMRESCreate(MPI_COMM_WORLD, &solver);
     HYPRE_ParCSRGMRESSetMaxIter(solver, 1000);
     HYPRE_ParCSRGMRESSetTol(solver, 1e-8);
-    HYPRE_ParCSRGMRESSetLogging(solver, 1);
+    HYPRE_ParCSRGMRESSetLogging(solver, 0);
 
     HYPRE_BoomerAMGCreate(&precond);
-    HYPRE_BoomerAMGSetPrintLevel(precond, 1);      // Print AMG info
+    HYPRE_BoomerAMGSetPrintLevel(precond, 0);     
     HYPRE_BoomerAMGSetNumSweeps(precond, 1);       // Sweeps per level
     HYPRE_BoomerAMGSetMaxLevels(precond, 25);
     HYPRE_BoomerAMGSetTol(precond, 0.0);           // AMG as preconditioner
@@ -44,20 +45,6 @@ void solve_with_hypre(HYPRE_IJMatrix A_ij, HYPRE_IJVector b_ij, HYPRE_IJVector x
     // Setup and solve
     HYPRE_ParCSRGMRESSetup(solver, A, b, x);
     HYPRE_ParCSRGMRESSolve(solver, A, b, x);
-
-    // Optional: print iterations info
-    int num_iterations;
-    double final_res_norm;
-    HYPRE_ParCSRGMRESGetNumIterations(solver, &num_iterations);
-    HYPRE_ParCSRGMRESGetFinalRelativeResidualNorm(solver, &final_res_norm);
-
-    int myid;
-    MPI_Comm_rank(MPI_COMM_WORLD, &myid);
-    if (myid == 0) 
-    {
-        printf("GMRES iterations = %d\n", num_iterations);
-        printf("Final relative residual norm = %e\n", final_res_norm);
-    }
 
     // Clean up
     HYPRE_ParCSRGMRESDestroy(solver);

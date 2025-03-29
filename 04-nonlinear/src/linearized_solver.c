@@ -54,8 +54,8 @@ void solve_linearized_implicit(int N, int max_steps)
             MPI_Irecv(&recv_r, 1, MPI_DOUBLE, myid + 1, 0, MPI_COMM_WORLD, &reqs[req_idx++]);
         MPI_Waitall(req_idx, reqs, MPI_STATUSES_IGNORE);
 
-        u[0] = (myid != 0) * recv_l;
-        u[local_n + 1] = (myid != num_procs - 1) * recv_r;
+        u[0] = (myid != 0) ? recv_l : u[1];
+        u[local_n + 1] = (myid != num_procs - 1) ? recv_r : 1.0;
 
         // compute dt
         double umax_local = 0.0;
@@ -63,12 +63,21 @@ void solve_linearized_implicit(int N, int max_steps)
             if (u[i] > umax_local) umax_local = u[i];
         double umax;
         MPI_Allreduce(&umax_local, &umax, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
-        double dt = gamma * 2.0 / (4.0 * sigma * pow(umax, 3) + 4.0 * kappa(umax) / (dx * dx));
+        double dt = 0.5 * gamma / (sigma * pow(umax, 3) + kappa(umax) / (dx * dx));
 
         // Kn+1/2
-        double *Kn12 = calloc(local_n + 1, sizeof(double));
-        for (int i = 0; i < local_n + 1; i ++)
-            Kn12[i] = 0.5 * (kappa(u[i + 1]) + kappa(u[i + 2]));
+        double *Kn12 = malloc((local_n + 1) * sizeof(double));
+        for (int i = 0; i < local_n + 1; i ++) 
+        {
+            double ku1 = kappa(u[i]);
+            double ku2 = kappa(u[i + 1]);
+            if (isnan(ku1) || isnan(ku2) || ku1 < 0 || ku2 < 0) 
+            {
+                ku1 = fmax(ku1, 0.0);
+                ku2 = fmax(ku2, 0.0);
+            }
+            Kn12[i] = 0.5 * (ku1 + ku2);
+        }
 
         // HYPRE setup
         HYPRE_IJMatrix A;
@@ -145,8 +154,8 @@ void solve_linearized_implicit(int N, int max_steps)
         double err2_global;
         MPI_Allreduce(&err2_local, &err2_global, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
         double err = sqrt(err2_global / N);
-        if (myid == 0 && step % 10 == 0)
-            printf("Step %d: dt = %.2e, error = %.2e\n", step, dt, err);
+        if (myid == 0)
+            printf("%d\t%.2e\t%.2e\n", step, dt, err);
 
         free(Kn12);
         HYPRE_IJMatrixDestroy(A);

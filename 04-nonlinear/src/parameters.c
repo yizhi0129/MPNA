@@ -4,8 +4,8 @@
 double kappa(double u) 
 {
     if (u < 0.0 || isnan(u) || isinf(u)) return 0.0;
-    return KAPPA0 * sqrt(u);
-    // return KAPPA0 * u * u;
+    //return KAPPA0 * sqrt(u);
+    return KAPPA0 * u * u;
 }
 
 double heaviside(double x) 
